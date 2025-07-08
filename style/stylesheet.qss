@@ -1,0 +1,8 @@
+QDialog#LoginDialog,
+#RegisterDialog {
+}
+
+#user_label,
+#pass_label {
+    color: rgb(255, 255, 255);
+}
