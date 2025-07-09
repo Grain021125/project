@@ -18,6 +18,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
@@ -26,6 +27,9 @@ class Ui_RegisterDialog
 public:
     QVBoxLayout *verticalLayout;
     QSpacerItem *verticalSpacer;
+    QWidget *widget;
+    QVBoxLayout *verticalLayout_2;
+    QLabel *error_label;
     QHBoxLayout *horizontalLayout;
     QLabel *user_label;
     QLineEdit *user_edit;
@@ -41,7 +45,7 @@ public:
     QHBoxLayout *horizontalLayout_4;
     QLabel *code_label;
     QLineEdit *code_edit;
-    QPushButton *code_botton;
+    QPushButton *get_code_button;
     QSpacerItem *verticalSpacer_2;
     QHBoxLayout *horizontalLayout_5;
     QPushButton *verify_bottom;
@@ -59,6 +63,19 @@ public:
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
         verticalLayout->addItem(verticalSpacer);
+
+        widget = new QWidget(RegisterDialog);
+        widget->setObjectName("widget");
+        verticalLayout_2 = new QVBoxLayout(widget);
+        verticalLayout_2->setObjectName("verticalLayout_2");
+        error_label = new QLabel(widget);
+        error_label->setObjectName("error_label");
+        error_label->setAlignment(Qt::AlignmentFlag::AlignCenter);
+
+        verticalLayout_2->addWidget(error_label);
+
+
+        verticalLayout->addWidget(widget);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName("horizontalLayout");
@@ -152,12 +169,12 @@ public:
 
         horizontalLayout_4->addWidget(code_edit);
 
-        code_botton = new QPushButton(RegisterDialog);
-        code_botton->setObjectName("code_botton");
-        code_botton->setMinimumSize(QSize(0, 25));
-        code_botton->setMaximumSize(QSize(16777215, 25));
+        get_code_button = new QPushButton(RegisterDialog);
+        get_code_button->setObjectName("get_code_button");
+        get_code_button->setMinimumSize(QSize(0, 25));
+        get_code_button->setMaximumSize(QSize(16777215, 25));
 
-        horizontalLayout_4->addWidget(code_botton);
+        horizontalLayout_4->addWidget(get_code_button);
 
 
         verticalLayout->addLayout(horizontalLayout_4);
@@ -198,12 +215,13 @@ public:
     void retranslateUi(QDialog *RegisterDialog)
     {
         RegisterDialog->setWindowTitle(QCoreApplication::translate("RegisterDialog", "Dialog", nullptr));
+        error_label->setText(QCoreApplication::translate("RegisterDialog", "\351\224\231\350\257\257\346\217\220\347\244\272", nullptr));
         user_label->setText(QCoreApplication::translate("RegisterDialog", "\347\224\250\346\210\267", nullptr));
         email_label->setText(QCoreApplication::translate("RegisterDialog", "\351\202\256\347\256\261", nullptr));
         pass_label->setText(QCoreApplication::translate("RegisterDialog", "\345\257\206\347\240\201", nullptr));
         verify_label->setText(QCoreApplication::translate("RegisterDialog", "\347\241\256\350\256\244\345\257\206\347\240\201", nullptr));
         code_label->setText(QCoreApplication::translate("RegisterDialog", "\351\252\214\350\257\201\347\240\201", nullptr));
-        code_botton->setText(QCoreApplication::translate("RegisterDialog", "\350\216\267\345\217\226", nullptr));
+        get_code_button->setText(QCoreApplication::translate("RegisterDialog", "\350\216\267\345\217\226", nullptr));
         verify_bottom->setText(QCoreApplication::translate("RegisterDialog", "\347\241\256\350\256\244", nullptr));
         cancel_button->setText(QCoreApplication::translate("RegisterDialog", "\345\217\226\346\266\210", nullptr));
     } // retranslateUi

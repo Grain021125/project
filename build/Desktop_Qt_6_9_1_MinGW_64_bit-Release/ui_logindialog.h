@@ -56,7 +56,9 @@ public:
     {
         if (LoginDialog->objectName().isEmpty())
             LoginDialog->setObjectName("LoginDialog");
-        LoginDialog->resize(1085, 832);
+        LoginDialog->resize(300, 500);
+        LoginDialog->setMinimumSize(QSize(300, 500));
+        LoginDialog->setMaximumSize(QSize(300, 500));
         horizontalLayout = new QHBoxLayout(LoginDialog);
         horizontalLayout->setObjectName("horizontalLayout");
         verticalLayout = new QVBoxLayout();
@@ -68,7 +70,7 @@ public:
         gridLayout->setObjectName("gridLayout");
         label = new QLabel(widget);
         label->setObjectName("label");
-        label->setMaximumSize(QSize(500, 500));
+        label->setMaximumSize(QSize(250, 250));
         label->setPixmap(QPixmap(QString::fromUtf8(":/res/R-C.png")));
         label->setScaledContents(true);
         label->setAlignment(Qt::AlignmentFlag::AlignCenter);

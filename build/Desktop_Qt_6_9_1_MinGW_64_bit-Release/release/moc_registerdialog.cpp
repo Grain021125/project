@@ -7,6 +7,7 @@
 *****************************************************************************/
 
 #include "../../../registerdialog.h"
+#include <QtNetwork/QSslError>
 #include <QtCore/qmetatype.h>
 
 #include <QtCore/qtmochelpers.h>
@@ -38,10 +39,24 @@ template <> constexpr inline auto RegisterDialog::qt_create_metaobjectdata<qt_me
 {
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
-        "RegisterDialog"
+        "RegisterDialog",
+        "on_get_code_button_clicked",
+        "",
+        "slot_reg_mod_finish",
+        "ReqId",
+        "id",
+        "result",
+        "ErrorCodes",
+        "err"
     };
 
     QtMocHelpers::UintData qt_methods {
+        // Slot 'on_get_code_button_clicked'
+        QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'slot_reg_mod_finish'
+        QtMocHelpers::SlotData<void(ReqId, QString, ErrorCodes)>(3, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 4, 5 }, { QMetaType::QString, 6 }, { 0x80000000 | 7, 8 },
+        }}),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -63,10 +78,13 @@ Q_CONSTINIT const QMetaObject RegisterDialog::staticMetaObject = { {
 void RegisterDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     auto *_t = static_cast<RegisterDialog *>(_o);
-    (void)_t;
-    (void)_c;
-    (void)_id;
-    (void)_a;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->on_get_code_button_clicked(); break;
+        case 1: _t->slot_reg_mod_finish((*reinterpret_cast< std::add_pointer_t<ReqId>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<ErrorCodes>>(_a[3]))); break;
+        default: ;
+        }
+    }
 }
 
 const QMetaObject *RegisterDialog::metaObject() const
@@ -85,6 +103,18 @@ void *RegisterDialog::qt_metacast(const char *_clname)
 int RegisterDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QDialog::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 2)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 2;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 2)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 2;
+    }
     return _id;
 }
 QT_WARNING_POP
