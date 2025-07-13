@@ -1,0 +1,14 @@
+﻿  CServer.cpp
+C:\Users\Grain\Desktop\project\GateServer\const.h(3,10): error C1083: 无法打开包括文件: “boost/beast/http.hpp”: No such file or directory
+  (编译源文件“CServer.cpp”)
+  
+  GateServer.cpp
+C:\Users\Grain\Desktop\project\GateServer\GateServer.cpp(2,10): error C1083: 无法打开包括文件: “json/json.h”: No such file or directory
+  HttpConnection.cpp
+C:\Users\Grain\Desktop\project\GateServer\const.h(3,10): error C1083: 无法打开包括文件: “boost/beast/http.hpp”: No such file or directory
+  (编译源文件“HttpConnection.cpp”)
+  
+  LogicSystem.cpp
+C:\Users\Grain\Desktop\project\GateServer\const.h(3,10): error C1083: 无法打开包括文件: “boost/beast/http.hpp”: No such file or directory
+  (编译源文件“LogicSystem.cpp”)
+  

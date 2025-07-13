@@ -1,0 +1,6 @@
+**/.vs/
+*.ipch
+*.db
+*.sdf
+*.suo
+*.user
