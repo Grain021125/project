@@ -14,14 +14,15 @@ class HttpMgr: public QObject, public Singleton<HttpMgr>, public std::enable_sha
     Q_OBJECT
 public:
     ~HttpMgr();
+    void PostHttpReq(QUrl url, QJsonObject json, ReqId req_id, Modules mod);
 private:
     friend class Singleton<HttpMgr>;
     HttpMgr();
     QNetworkAccessManager _manager;
-    void PostHttpReq(QUrl url, QJsonObject json, ReqId req_id, Modules mod);
 
-private slots:
+public slots:
     void slot_http_finish(ReqId id, QString result, ErrorCodes err, Modules mod);
+
 signals:
     void sig_http_finish(ReqId id, QString result, ErrorCodes err, Modules mod);
     void sig_reg_mod_finish(ReqId id, QString result, ErrorCodes err);

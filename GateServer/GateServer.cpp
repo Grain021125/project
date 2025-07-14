@@ -3,9 +3,13 @@
 #include <json/value.h>
 #include <json/reader.h>
 #include "CServer.h"
+#include "const.h"
 
 int main()
-{
+{	
+	boost::property_tree::ptree pt;
+	boost::property_tree::read_ini("config.ini", pt);
+
 	try
 	{
 		unsigned short port = static_cast<unsigned short>(8080);

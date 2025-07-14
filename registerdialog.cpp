@@ -14,7 +14,11 @@ RegisterDialog::RegisterDialog(QWidget *parent)
     ui->error_label->setProperty("state","normal");
     repolish(ui->error_label);
 
+    bool isConnected = connect(HttpMgr::GetInstance().get(), &HttpMgr::sig_reg_mod_finish, this, &RegisterDialog::slot_reg_mod_finish);
     connect(HttpMgr::GetInstance().get(), &HttpMgr::sig_reg_mod_finish, this, &RegisterDialog::slot_reg_mod_finish);
+    qDebug() << "HttpMgr instance:" << HttpMgr::GetInstance().get();
+    qDebug() << "RegisterDialog instance:" << this;
+    qDebug() << "Connection status:" << isConnected;
 
     initHttpHandlers();
 }
@@ -33,7 +37,13 @@ void RegisterDialog::on_get_code_button_clicked()
     bool match = regex.match(email).hasMatch();
     if (match) {
         //TODO: 发送http验证码
-        showTip(tr("邮箱正确"), true);
+        QJsonObject json_obj;
+        json_obj["email"] = email;
+        // qDebug() << gate_url_prefix;
+        HttpMgr::GetInstance()->PostHttpReq(QUrl(gate_url_prefix + "/get_varifycode"),
+                                            json_obj, ReqId::ID_GET_VARIFY_CODE, Modules::REGISTERMOD);
+        showTip(tr("验证码已发送至用户邮箱"), true);
+
     } else {
         showTip(tr("邮箱不正确"), false);
     }
@@ -41,12 +51,9 @@ void RegisterDialog::on_get_code_button_clicked()
 
 void RegisterDialog::slot_reg_mod_finish(ReqId id, QString result, ErrorCodes err)
 {
-    switch (err) {
-    case ErrorCodes::SUCCESS:
-        showTip("网络请求错误", false);
-        break;
-    default:
-        break;
+    if(err != ErrorCodes::SUCCESS) {
+        showTip(tr("网络请求错误"), false);
+        return;
     }
 
     //解析JSON字符串, res转化为 QByteArray
@@ -61,7 +68,6 @@ void RegisterDialog::slot_reg_mod_finish(ReqId id, QString result, ErrorCodes er
         showTip(tr("json解析失败"), false);
         return;
     }
-
 
     _handlers[id](jsonDoc.object());
     return;
@@ -78,8 +84,6 @@ void RegisterDialog::initHttpHandlers()
         }
 
         auto email = jsonObj["email"].toString();
-        showTip(tr("验证码已经发送到用户邮箱"), true);
-
         qDebug() << "email is " << email;
     });
 }
