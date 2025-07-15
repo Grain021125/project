@@ -1,0 +1,8 @@
+C:\Users\Grain\Desktop\project\server\GateServer\ConfigMgr.cpp;C:\Users\Grain\Desktop\project\server\GateServer\GateServer\x64\Debug\ConfigMgr.obj
+C:\Users\Grain\Desktop\project\server\GateServer\CServer.cpp;C:\Users\Grain\Desktop\project\server\GateServer\GateServer\x64\Debug\CServer.obj
+C:\Users\Grain\Desktop\project\server\GateServer\GateServer.cpp;C:\Users\Grain\Desktop\project\server\GateServer\GateServer\x64\Debug\GateServer.obj
+C:\Users\Grain\Desktop\project\server\GateServer\HttpConnection.cpp;C:\Users\Grain\Desktop\project\server\GateServer\GateServer\x64\Debug\HttpConnection.obj
+C:\Users\Grain\Desktop\project\server\GateServer\LogicSystem.cpp;C:\Users\Grain\Desktop\project\server\GateServer\GateServer\x64\Debug\LogicSystem.obj
+C:\Users\Grain\Desktop\project\server\GateServer\message.grpc.pb.cc;C:\Users\Grain\Desktop\project\server\GateServer\GateServer\x64\Debug\message.grpc.pb.obj
+C:\Users\Grain\Desktop\project\server\GateServer\message.pb.cc;C:\Users\Grain\Desktop\project\server\GateServer\GateServer\x64\Debug\message.pb.obj
+C:\Users\Grain\Desktop\project\server\GateServer\VarifyGrpcClient.cpp;C:\Users\Grain\Desktop\project\server\GateServer\GateServer\x64\Debug\VarifyGrpcClient.obj
