@@ -76,9 +76,10 @@ void RegisterDialog::initHttpHandlers()
 {
     //注册获取验证码回包的逻辑
     _handlers.insert(ReqId::ID_GET_VARIFY_CODE, [this](const QJsonObject& jsonObj){
-        int error = jsonObj["eroor"].toInt();
-        if(error != ErrorCodes::SUCCESS) {
-            showTip(tr("参数错误"), false);
+        int error = jsonObj["error"].toInt();
+        qDebug() << error;
+        if(error != static_cast<int>(ErrorCodes::SUCCESS)) {
+            showTip(tr("获取验证码失败"), false);
             return;
         }
 

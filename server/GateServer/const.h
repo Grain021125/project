@@ -15,6 +15,10 @@
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/ini_parser.hpp>
 #include "ConfigMgr.h"
+#include <atomic>
+#include <queue>
+#include <condition_variable>
+#include <mutex>
 
 namespace beast = boost::beast;
 namespace http = beast::http;
@@ -26,6 +30,3 @@ enum ErrorCodes {
 	ERROR_JSON = 1001,
 	RPCFailed = 1002
 };
-
-class ConfigMgr;
-extern ConfigMgr gCfgMgr;

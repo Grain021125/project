@@ -9,7 +9,7 @@ async function GetVarifyCode(call, callback) {
     try {
         uniqueId = uuidv4();
         console.log("uniqueId is ", uniqueId)
-        let text_str = '.-.. / .. / -.- . / ..-\n' + uniqueId + ''
+        let text_str = '验证码为' + uniqueId + '有效期三分钟'
         //发送邮件
         let mailOptions_ = {
             from: 'grain021125@163.com',

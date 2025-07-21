@@ -70,6 +70,15 @@ LogicSystem::LogicSystem() {
 
 		auto email = src_root["email"].asString();
 		GetVarifyRsp rsp =  VarifyGrpcClient::GetInstance()->GetVarifyCode(email);
+
+		if (rsp.error() == ErrorCodes::RPCFailed) {
+			std::cout << "Failed to connect VarifyServer" << std::endl;
+			root["error"] = ErrorCodes::RPCFailed;
+			std::string jsonstr = root.toStyledString();
+			beast::ostream(connection->_response.body()) << jsonstr;
+			return true;
+		}
+
 		std::cout << "email is " << email << std::endl;
 		root["error"] = rsp.error();
 		root["email"] = email;

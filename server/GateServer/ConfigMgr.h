@@ -40,6 +40,11 @@ public:
 		_config_map.clear();
 	}
 
+	static ConfigMgr& GetInstance() {
+		static ConfigMgr instance;
+		return instance;
+	}
+
 	SectionInfo operator[](const std::string& section) {
 		if (_config_map.find(section) == _config_map.end()) {
 			return SectionInfo();
@@ -48,17 +53,11 @@ public:
 		return _config_map[section];
 	}
 
-	ConfigMgr();
-	ConfigMgr(const ConfigMgr&);
-	ConfigMgr& operator=(const ConfigMgr& src) {
-		if (&src == this) {
-			return *this;
-		}
-
-		this->_config_map = src._config_map;
-		return *this;
-	}
 private:
+	ConfigMgr();
+	ConfigMgr(const ConfigMgr&) = delete;
+	ConfigMgr& operator=(const ConfigMgr& src) = delete;
+
 	std::map<std::string, SectionInfo> _config_map;
 };
 
