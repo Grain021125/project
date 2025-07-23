@@ -19,6 +19,8 @@
 #include <queue>
 #include <condition_variable>
 #include <mutex>
+#include <hiredis.h>
+#include <stdio.h>
 
 namespace beast = boost::beast;
 namespace http = beast::http;

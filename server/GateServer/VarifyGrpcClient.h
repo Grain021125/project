@@ -85,9 +85,11 @@ public:
 
 		Status status = _stub->GetVarifyCode(&context, request, &reply);
 		if (status.ok()) {
+			_pool->returnConnection(std::move(_stub));
 			return reply;
 		}
 		else {
+			_pool->returnConnection(std::move(_stub));
 			reply.set_error(ErrorCodes::RPCFailed);
 			return reply;
 		}
