@@ -28,7 +28,6 @@ void TestRedis() {
 
 int main()
 {
-	TestRedis();
 	auto& configMgr = ConfigMgr::GetInstance();
 	std::string gate_prot_str = configMgr["GateServer"]["Port"];
 	unsigned short gate_port = atoi(gate_prot_str.c_str());
