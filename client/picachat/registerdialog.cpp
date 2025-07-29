@@ -48,6 +48,48 @@ void RegisterDialog::on_get_code_button_clicked()
     }
 }
 
+void RegisterDialog::on_sure_button_clicked()
+{
+    if (ui->user_edit->text() == ""){
+        showTip(tr("用户名不能为空"), false);
+        return;
+    }
+
+    if (ui->email_edit->text() == ""){
+        showTip(tr("邮箱不能为空"), false);
+        return;
+    }
+
+    if (ui->pass_edit->text() == ""){
+        showTip(tr("密码不能为空"), false);
+        return;
+    }
+
+    if (ui->verify_edit->text() == ""){
+        showTip(tr("确认密码不能为空"), false);
+        return;
+    }
+
+    if (ui->pass_edit != ui->verify_edit) {
+        showTip(tr("两次输入密码不匹配"), false);
+        return;
+    }
+
+    if (ui->code_edit->text() == ""){
+        showTip(tr("验证码不能为空"), false);
+        return;
+    }
+
+    QJsonObject reg_json;
+    reg_json["user"] = ui->user_edit->text();
+    reg_json["password"] = ui->pass_edit->text();
+    reg_json["email"] = ui->email_edit->text();
+    reg_json["confirm"] = ui->verify_edit->text();
+    reg_json["varifycode"] = ui->code_edit->text();
+    HttpMgr::GetInstance()->PostHttpReq(QUrl(gate_url_prefix+"/user_register"),
+                                        reg_json, ReqId::ID_REG_USER, Modules::REGISTERMOD);
+}
+
 void RegisterDialog::slot_reg_mod_finish(ReqId id, QString result, ErrorCodes err)
 {
     if(err != ErrorCodes::SUCCESS) {
@@ -87,6 +129,20 @@ void RegisterDialog::initHttpHandlers()
         qDebug() << "email is " << email;
         showTip(tr("验证码已发送至用户邮箱"), true);
     });
+
+
+    //注册用户注册回包逻辑
+    _handlers.insert(ReqId::ID_REG_USER, [this](const QJsonObject& jsonObj){
+        int error = jsonObj["error"].toInt();
+        qDebug() << error;
+        if (error != ErrorCodes::SUCCESS) {
+            qDebug() << "";
+            showTip(tr("注册信息有误"), false);
+            return;
+        }
+
+        showTip(tr("注册成功!"), true);
+    });
 }
 
 
@@ -100,4 +156,5 @@ void RegisterDialog::showTip(QString str, bool b_ok)
     ui->error_label->setText(str);
     repolish(ui->error_label);
 }
+
 

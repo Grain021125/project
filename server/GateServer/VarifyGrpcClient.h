@@ -90,7 +90,7 @@ public:
 		}
 		else {
 			_pool->returnConnection(std::move(_stub));
-			reply.set_error(ErrorCodes::RPCFailed);
+			reply.set_error(ErrorCodes::RPC_FAILD);
 			return reply;
 		}
 	}

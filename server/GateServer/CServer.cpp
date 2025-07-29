@@ -26,7 +26,7 @@ void CServer::Start() {
 		}
 		catch (const std::exception& exp)
 		{
-
+			std::cerr << "CServer::Start exception: " << exp.what() << std::endl;
 		}
 		}); //把接受到的链接传递给socket
 }

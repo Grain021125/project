@@ -30,5 +30,19 @@ using tcp = boost::asio::ip::tcp;
 enum ErrorCodes {
 	SUCCESS = 0,
 	ERROR_JSON = 1001,
-	RPCFailed = 1002
+	RPC_FAILD = 1002,
+	VARIFYCODE_EXPIRED = 1003,
+	USER_EXIST = 1004
+};
+
+class Defer {
+public:
+	Defer(std::function<void()> func) : _func(std::move(func)) {}
+	~Defer() {
+		if (_func) {
+			_func();
+		}
+	}
+private:
+	std::function<void()> _func;
 };

@@ -6,5 +6,8 @@ C:\Users\Grain\Desktop\project\server\GateServer\HttpConnection.cpp;C:\Users\Gra
 C:\Users\Grain\Desktop\project\server\GateServer\LogicSystem.cpp;C:\Users\Grain\Desktop\project\server\GateServer\GateServer\x64\Debug\LogicSystem.obj
 C:\Users\Grain\Desktop\project\server\GateServer\message.grpc.pb.cc;C:\Users\Grain\Desktop\project\server\GateServer\GateServer\x64\Debug\message.grpc.pb.obj
 C:\Users\Grain\Desktop\project\server\GateServer\message.pb.cc;C:\Users\Grain\Desktop\project\server\GateServer\GateServer\x64\Debug\message.pb.obj
+C:\Users\Grain\Desktop\project\server\GateServer\MysqlDAO.cpp;C:\Users\Grain\Desktop\project\server\GateServer\GateServer\x64\Debug\MysqlDAO.obj
+C:\Users\Grain\Desktop\project\server\GateServer\MysqlMgr.cpp;C:\Users\Grain\Desktop\project\server\GateServer\GateServer\x64\Debug\MysqlMgr.obj
+C:\Users\Grain\Desktop\project\server\GateServer\MysqlPool.cpp;C:\Users\Grain\Desktop\project\server\GateServer\GateServer\x64\Debug\MysqlPool.obj
 C:\Users\Grain\Desktop\project\server\GateServer\RedisMgr.cpp;C:\Users\Grain\Desktop\project\server\GateServer\GateServer\x64\Debug\RedisMgr.obj
 C:\Users\Grain\Desktop\project\server\GateServer\VarifyGrpcClient.cpp;C:\Users\Grain\Desktop\project\server\GateServer\GateServer\x64\Debug\VarifyGrpcClient.obj

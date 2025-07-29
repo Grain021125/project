@@ -279,7 +279,7 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_5">
      <item>
-      <widget class="QPushButton" name="verify_bottom">
+      <widget class="QPushButton" name="sure_button">
        <property name="minimumSize">
         <size>
          <width>0</width>
