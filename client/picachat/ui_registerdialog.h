@@ -19,6 +19,7 @@
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
+#include "timerbtn.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -45,7 +46,7 @@ public:
     QHBoxLayout *horizontalLayout_4;
     QLabel *code_label;
     QLineEdit *code_edit;
-    QPushButton *get_code_button;
+    TimerBtn *get_code_button;
     QSpacerItem *verticalSpacer_2;
     QHBoxLayout *horizontalLayout_5;
     QPushButton *sure_button;
@@ -169,7 +170,7 @@ public:
 
         horizontalLayout_4->addWidget(code_edit);
 
-        get_code_button = new QPushButton(RegisterDialog);
+        get_code_button = new TimerBtn(RegisterDialog);
         get_code_button->setObjectName("get_code_button");
         get_code_button->setMinimumSize(QSize(0, 25));
         get_code_button->setMaximumSize(QSize(16777215, 25));

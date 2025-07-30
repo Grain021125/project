@@ -1,6 +1,7 @@
 #ifndef GLOBAL_H
 #define GLOBAL_H
 
+
 #include <QWidget>
 #include <functional>
 #include "Qstyle"
@@ -13,6 +14,8 @@
 #include <QUrl>
 #include <QDir>
 #include <QSettings>
+#include <QTimer>
+
 
 
 // 刷新qss

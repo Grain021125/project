@@ -2,6 +2,7 @@
 #include "HttpConnection.h"
 #include "VarifyGrpcClient.h"
 #include "RedisMgr.h"
+#include "MysqlMgr.h"
 
 bool LogicSystem::HandleGet(std::string path, std::shared_ptr<HttpConnection> connection)
 {
@@ -104,8 +105,14 @@ LogicSystem::LogicSystem() {
 			return true;
 		}
 
+		auto email = src_root["email"].asString();
+		auto name = src_root["user"].asString();
+		auto pwd = src_root["password"].asString();
+		auto confirm = src_root["confirm"].asString();
+
 		std::string varify_code;
 		bool b_get_varify = RedisMgr::GetInstance()->Get("code_" + src_root["email"].asString(), varify_code);
+		// 判断验证码是否失效
 		if (!b_get_varify) {
 			std::cout << "user_register: Varifycode expired!" << std::endl;
 			root["error"] = ErrorCodes::VARIFYCODE_EXPIRED;
@@ -114,6 +121,7 @@ LogicSystem::LogicSystem() {
 			return true;
 		}
 
+		// 检查验证码是否匹配
 		if (varify_code != src_root["varifycode"].asString()) {
 			std::cout << "user_register: Varifycode is not match!" << std::endl;
 			root["error"] = ErrorCodes::VARIFYCODE_EXPIRED;
@@ -123,18 +131,38 @@ LogicSystem::LogicSystem() {
 		}
 
 		//首先访问Redis检查用户是否存在
-		bool b_user_exists = RedisMgr::GetInstance()->ExistsKey("user_" + src_root["user"].asString());
-		if (b_user_exists) {
-			std::cout << "user_register: User already exists!" << std::endl;
+		//bool b_user_exists = RedisMgr::GetInstance()->ExistsKey("user_" + src_root["user"].asString());
+		//if (b_user_exists) {
+		//	std::cout << "user_register: User already exists!" << std::endl;
+		//	root["error"] = ErrorCodes::USER_EXIST;
+		//	std::string jsonstr = root.toStyledString();
+		//	beast::ostream(connection->_response.body()) << jsonstr;
+		//	return true;
+		//}
+
+		//TODO: 访问MySQL检查用户是否存在
+		int uid = MysqlMgr::GetInstance()->RegUser(
+			name,
+			email,
+			pwd
+		);
+		if (uid == 0) {
+			std::cout << "user_register: User or email already exists!" << std::endl;
 			root["error"] = ErrorCodes::USER_EXIST;
 			std::string jsonstr = root.toStyledString();
 			beast::ostream(connection->_response.body()) << jsonstr;
 			return true;
 		}
-
-		//TODO: 访问MySQL检查用户是否存在
+		if (uid == -1) {
+			std::cout << "user_register: MySQL connection error!" << std::endl;
+			root["error"] = ErrorCodes::MYSQL_FAILD;
+			std::string jsonstr = root.toStyledString();
+			beast::ostream(connection->_response.body()) << jsonstr;
+			return true;
+		}
 
 		root["error"] = ErrorCodes::SUCCESS;
+		root["uid"] = uid;
 		root["user"] = src_root["user"].asString();
 		root["email"] = src_root["email"].asString();
 		root["password"] = src_root["password"].asString();

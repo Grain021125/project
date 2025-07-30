@@ -3,6 +3,7 @@
 #include "global.h"
 #include "httpmgr.h"
 
+
 RegisterDialog::RegisterDialog(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::RegisterDialog)
@@ -13,6 +14,18 @@ RegisterDialog::RegisterDialog(QWidget *parent)
 
     ui->error_label->setProperty("state","normal");
     repolish(ui->error_label);
+
+    _count_timer = new QTimer(this);
+    connect(_count_timer, &QTimer::timeout, [this](){
+        if (_count_time == 0) {
+            _count_timer->stop();
+            emit sigSwitchLogin();
+            return;
+        }
+        --_count_time;
+        auto str = QString("注册成功, %1 s后返回登录页面...").arg(_count_time);
+        showTip(str, true);
+    });
 
     bool isConnected = connect(HttpMgr::GetInstance().get(), &HttpMgr::sig_reg_mod_finish, this, &RegisterDialog::slot_reg_mod_finish);
     connect(HttpMgr::GetInstance().get(), &HttpMgr::sig_reg_mod_finish, this, &RegisterDialog::slot_reg_mod_finish);
@@ -70,7 +83,7 @@ void RegisterDialog::on_sure_button_clicked()
         return;
     }
 
-    if (ui->pass_edit != ui->verify_edit) {
+    if (ui->pass_edit->text() != ui->verify_edit->text()) {
         showTip(tr("两次输入密码不匹配"), false);
         return;
     }
@@ -119,7 +132,6 @@ void RegisterDialog::initHttpHandlers()
     //注册获取验证码回包的逻辑
     _handlers.insert(ReqId::ID_GET_VARIFY_CODE, [this](const QJsonObject& jsonObj){
         int error = jsonObj["error"].toInt();
-        qDebug() << error;
         if(error != static_cast<int>(ErrorCodes::SUCCESS)) {
             showTip(tr("获取验证码失败"), false);
             return;
@@ -134,14 +146,13 @@ void RegisterDialog::initHttpHandlers()
     //注册用户注册回包逻辑
     _handlers.insert(ReqId::ID_REG_USER, [this](const QJsonObject& jsonObj){
         int error = jsonObj["error"].toInt();
-        qDebug() << error;
         if (error != ErrorCodes::SUCCESS) {
-            qDebug() << "";
             showTip(tr("注册信息有误"), false);
             return;
         }
 
         showTip(tr("注册成功!"), true);
+        ChangeTipPage();
     });
 }
 
@@ -157,4 +168,17 @@ void RegisterDialog::showTip(QString str, bool b_ok)
     repolish(ui->error_label);
 }
 
+void RegisterDialog::ChangeTipPage()
+{
+    _count_timer->stop();
+    _count_timer->start(1000);
+}
+
+
+
+void RegisterDialog::on_cancel_button_clicked()
+{
+    _count_timer->stop();
+    emit sigSwitchLogin();
+}
 

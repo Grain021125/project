@@ -8,6 +8,7 @@ MysqlDAO::MysqlDAO()
 	const auto& user = cfg["MysqlServer"]["User"];
 	const auto& password = cfg["MysqlServer"]["Password"];
 	const auto& schema = cfg["MysqlServer"]["Schema"];
+
 	_pool.reset(new MysqlPool(
 		host + ":" + port,
 		user,
@@ -34,7 +35,10 @@ int MysqlDAO::RegUser(const std::string& name, const std::string& email, const s
 		pstmt->setString(2, email);
 		pstmt->setString(3, pwd);
 
+		std::cout << "MysqlDAO::RegUser: Registering user: " << name << ", email: " << email << std::endl;
 		pstmt->execute();
+
+		std::cout << "Here" << std::endl;
 
 		//查询输出参数
 		std::unique_ptr<sql::Statement> stmt(connection->getConnection().createStatement());
@@ -55,7 +59,7 @@ int MysqlDAO::RegUser(const std::string& name, const std::string& email, const s
 		if (connection){
 			_pool->returnConnection(std::move(connection));
 		}
-		std::cerr << "SQLException: " << err.what() << std::endl;
+		std::cerr << "DAO: SQLException: " << err.what();
 		std::cerr << " (MySQL error code: " << err.getErrorCode();
 		std::cerr << ", SQLState: " << err.getSQLState() << ")" << std::endl;
 		return -1;

@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../../httpmgr.h"
+#include "../../../client/picachat/httpmgr.h"
 #include <QtNetwork/QSslError>
 #include <QtCore/qmetatype.h>
 
