@@ -39,7 +39,7 @@
       <item>
        <widget class="QLabel" name="error_label">
         <property name="text">
-         <string>错误提示</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignmentFlag::AlignCenter</set>

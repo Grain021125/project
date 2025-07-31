@@ -1,6 +1,8 @@
 #ifndef SINGLETON_H
 #define SINGLETON_H
-#include "global.h"
+#include <memory>
+#include <iostream>
+#include <mutex>
 
 template <typename T>
 class Singleton

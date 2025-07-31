@@ -1,7 +1,7 @@
 ﻿  C:\Users\Grain\Desktop\project\server\GateServer\mysqlcppconn-10-vs14.dll
   C:\Users\Grain\Desktop\project\server\GateServer\mysqlcppconnx-2-vs14.dll
   复制了 2 个文件
-  LogicSystem.cpp
+  MysqlDAO.cpp
   Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
   - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
   - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.

@@ -7,11 +7,13 @@ TARGET = project
 TEMPLATE = app
 RC_ICONS = icon.ico
 DESTDIR = ./bin
+UI_DIR= ./UI
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    clickablelabel.cpp \
     global.cpp \
     httpmgr.cpp \
     logindialog.cpp \
@@ -21,6 +23,7 @@ SOURCES += \
     timerbtn.cpp
 
 HEADERS += \
+    clickablelabel.h \
     global.h \
     httpmgr.h \
     logindialog.h \

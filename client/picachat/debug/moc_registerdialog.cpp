@@ -40,8 +40,11 @@ template <> constexpr inline auto RegisterDialog::qt_create_metaobjectdata<qt_me
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
         "RegisterDialog",
-        "on_get_code_button_clicked",
+        "sigSwitchLogin",
         "",
+        "on_get_code_button_clicked",
+        "on_sure_button_clicked",
+        "on_cancel_button_clicked",
         "slot_reg_mod_finish",
         "ReqId",
         "id",
@@ -51,11 +54,17 @@ template <> constexpr inline auto RegisterDialog::qt_create_metaobjectdata<qt_me
     };
 
     QtMocHelpers::UintData qt_methods {
+        // Signal 'sigSwitchLogin'
+        QtMocHelpers::SignalData<void()>(1, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'on_get_code_button_clicked'
-        QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_sure_button_clicked'
+        QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_cancel_button_clicked'
+        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'slot_reg_mod_finish'
-        QtMocHelpers::SlotData<void(ReqId, QString, ErrorCodes)>(3, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { 0x80000000 | 4, 5 }, { QMetaType::QString, 6 }, { 0x80000000 | 7, 8 },
+        QtMocHelpers::SlotData<void(ReqId, QString, ErrorCodes)>(6, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 7, 8 }, { QMetaType::QString, 9 }, { 0x80000000 | 10, 11 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
@@ -80,10 +89,17 @@ void RegisterDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
     auto *_t = static_cast<RegisterDialog *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->on_get_code_button_clicked(); break;
-        case 1: _t->slot_reg_mod_finish((*reinterpret_cast< std::add_pointer_t<ReqId>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<ErrorCodes>>(_a[3]))); break;
+        case 0: _t->sigSwitchLogin(); break;
+        case 1: _t->on_get_code_button_clicked(); break;
+        case 2: _t->on_sure_button_clicked(); break;
+        case 3: _t->on_cancel_button_clicked(); break;
+        case 4: _t->slot_reg_mod_finish((*reinterpret_cast< std::add_pointer_t<ReqId>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<ErrorCodes>>(_a[3]))); break;
         default: ;
         }
+    }
+    if (_c == QMetaObject::IndexOfMethod) {
+        if (QtMocHelpers::indexOfMethod<void (RegisterDialog::*)()>(_a, &RegisterDialog::sigSwitchLogin, 0))
+            return;
     }
 }
 
@@ -106,15 +122,21 @@ int RegisterDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 5;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 5)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 2;
+        _id -= 5;
     }
     return _id;
+}
+
+// SIGNAL 0
+void RegisterDialog::sigSwitchLogin()
+{
+    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }
 QT_WARNING_POP

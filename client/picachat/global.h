@@ -6,9 +6,6 @@
 #include <functional>
 #include "Qstyle"
 #include <QRegularExpression>
-#include <memory>
-#include <iostream>
-#include <mutex>
 #include <QNetworkReply>
 #include <QJsonObject>
 #include <QUrl>
@@ -18,16 +15,19 @@
 
 
 
+
 // 刷新qss
 extern std::function<void(QWidget*)> repolish;
 
 enum ReqId{
     ID_GET_VARIFY_CODE = 1001, //获取验证码
     ID_REG_USER = 1002, //注册用户
+    ID_USER_LOGIN = 1003 //用户登录
 };
 
 enum Modules{
     REGISTERMOD = 0,
+    LOGINMOD = 1
 };
 
 enum ErrorCodes{

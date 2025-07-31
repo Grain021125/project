@@ -12,6 +12,9 @@ public:
 			return _dao.RegUser(name, email, pwd);
 		}
 		
+		int CheckUser(const std::string& name, const std::string& password, UserInfo& userInfo) {
+			return _dao.CheckUser(name, password, userInfo);
+		}
 private:
 	MysqlDAO _dao;
 };

@@ -8,6 +8,7 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 #include <QByteArray>
+#include "global.h"
 
 class HttpMgr: public QObject, public Singleton<HttpMgr>, public std::enable_shared_from_this<HttpMgr>
 {
@@ -26,6 +27,7 @@ public slots:
 signals:
     void sig_http_finish(ReqId id, QString result, ErrorCodes err, Modules mod);
     void sig_reg_mod_finish(ReqId id, QString result, ErrorCodes err);
+    void sig_login_mod_finish(ReqId, QString, ErrorCodes);
 };
 
 #endif // HTTPMGR_H

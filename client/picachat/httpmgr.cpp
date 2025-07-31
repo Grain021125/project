@@ -42,4 +42,8 @@ void HttpMgr::slot_http_finish(ReqId id, QString result, ErrorCodes err, Modules
         //发送信号通知指定模块http响应结束
         emit sig_reg_mod_finish(id, result, err);
     }
+
+    if (mod == Modules::LOGINMOD) {
+        emit sig_login_mod_finish(id, result, err);
+    }
 }

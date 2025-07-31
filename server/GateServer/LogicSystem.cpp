@@ -172,5 +172,52 @@ LogicSystem::LogicSystem() {
 		beast::ostream(connection->_response.body()) << jsonstr;
 		return true;
 		});
+
+	RegPost("/user_login", [](std::shared_ptr<HttpConnection> connection) {
+		auto body = boost::beast::buffers_to_string(connection->_request.body().data());
+		std::cout << "received body is " << body << std::endl;
+		connection->_response.set(http::field::content_type, "text/json");
+		Json::Value root;
+		Json::Reader reader;
+		Json::Value src_root;
+		bool parse_success = reader.parse(body, src_root);
+		if (!parse_success) {
+			std::cout << "user_login: Failed to parse JSON data!" << std::endl;
+			root["error"] = ErrorCodes::ERROR_JSON;
+			std::string jsonstr = root.toStyledString();
+			beast::ostream(connection->_response.body()) << jsonstr;
+			return true;
+		}
+
+		auto name = src_root["user"].asString();
+		auto pwd = src_root["password"].asString();
+
+		UserInfo userInfo;
+		int login_result = MysqlMgr::GetInstance()->CheckUser(name, pwd, userInfo);
+		if (login_result == -1) {
+			std::cout << "user_login: User doesn\'t exists." << std::endl;
+			root["error"] = ErrorCodes::USER_NOT_EXIST;
+			std::string jsonstr = root.toStyledString();
+			beast::ostream(connection->_response.body()) << jsonstr;
+			return true;
+		}
+
+		if (login_result == -2) {
+			std::cout << "user_login: Password is wrong!" << std::endl;
+			root["error"] = ErrorCodes::PASSWORD_WRONG;
+			std::string jsonstr = root.toStyledString();
+			beast::ostream(connection->_response.body()) << jsonstr;
+			return true;
+		}
+		
+		//TODO: 登录成功,查询StatusServer找到合适的连接	
+
+		std::cout << "user_login: Login success!" << std::endl;
+		root["error"] = ErrorCodes::SUCCESS;
+		root["user"] = name;
+		std::string jsonstr = root.toStyledString();
+		beast::ostream(connection->_response.body()) << jsonstr;
+		return true;
+		});
 }
 
