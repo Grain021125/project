@@ -8,3 +8,4 @@
 *.pdb
 ./server/VarifyServer/node_modules
 server/GateServer/x64/Debug/
+./build
