@@ -136,6 +136,7 @@
     <ClCompile Include="MysqlMgr.cpp" />
     <ClCompile Include="MysqlPool.cpp" />
     <ClCompile Include="RedisMgr.cpp" />
+    <ClCompile Include="StatusGrpcClient.cpp" />
     <ClCompile Include="VarifyGrpcClient.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +153,7 @@
     <ClInclude Include="MysqlPool.h" />
     <ClInclude Include="RedisMgr.h" />
     <ClInclude Include="Singleton.h" />
+    <ClInclude Include="StatusGrpcClient.h" />
     <ClInclude Include="VarifyGrpcClient.h" />
   </ItemGroup>
   <ItemGroup>

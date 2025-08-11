@@ -3,6 +3,7 @@
 #include "VarifyGrpcClient.h"
 #include "RedisMgr.h"
 #include "MysqlMgr.h"
+#include "StatusGrpcClient.h"
 
 bool LogicSystem::HandleGet(std::string path, std::shared_ptr<HttpConnection> connection)
 {
@@ -211,10 +212,21 @@ LogicSystem::LogicSystem() {
 		}
 		
 		//TODO: 登录成功,查询StatusServer找到合适的连接	
+		auto reply = StatusGrpcClient::GetInstance()->GetChatServer(userInfo.uid);
+		if (reply.error()) {
+			std::cout << "user_login: error is " << reply.error() << std::endl;
+			root["error"] = ErrorCodes::RPC_FAILD;
+			std::string jsonstr = root.toStyledString();
+			beast::ostream(connection->_response.body()) << jsonstr;
+			return true;
+		}
 
 		std::cout << "user_login: Login success!" << std::endl;
 		root["error"] = ErrorCodes::SUCCESS;
 		root["user"] = name;
+		root["uid"] = userInfo.uid;
+		root["token"] = reply.token();
+		root["host"] = reply.host();
 		std::string jsonstr = root.toStyledString();
 		beast::ostream(connection->_response.body()) << jsonstr;
 		return true;

@@ -32,10 +32,13 @@ void LoginDialog::InitHttpHandlers()
         if (error != ErrorCodes::SUCCESS) {
             if (error == 1006) {
                 showTip(tr("用户不存在"), false);
+                return;
             }
             if (error == 1007) {
                 showTip(tr("密码错误"), false);
+                return;
             }
+            showTip(tr("服务器连接错误"),false);
             return;
         }
 

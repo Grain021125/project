@@ -1,0 +1,10 @@
+C:\Users\Grain\Desktop\project\server\StatusServer\AsioIOServicePool.cpp;C:\Users\Grain\Desktop\project\server\StatusServer\StatusServer\x64\Debug\AsioIOServicePool.obj
+C:\Users\Grain\Desktop\project\server\StatusServer\ConfigMgr.cpp;C:\Users\Grain\Desktop\project\server\StatusServer\StatusServer\x64\Debug\ConfigMgr.obj
+C:\Users\Grain\Desktop\project\server\StatusServer\message.grpc.pb.cc;C:\Users\Grain\Desktop\project\server\StatusServer\StatusServer\x64\Debug\message.grpc.pb.obj
+C:\Users\Grain\Desktop\project\server\StatusServer\message.pb.cc;C:\Users\Grain\Desktop\project\server\StatusServer\StatusServer\x64\Debug\message.pb.obj
+C:\Users\Grain\Desktop\project\server\StatusServer\MysqlDAO.cpp;C:\Users\Grain\Desktop\project\server\StatusServer\StatusServer\x64\Debug\MysqlDAO.obj
+C:\Users\Grain\Desktop\project\server\StatusServer\MysqlMgr.cpp;C:\Users\Grain\Desktop\project\server\StatusServer\StatusServer\x64\Debug\MysqlMgr.obj
+C:\Users\Grain\Desktop\project\server\StatusServer\MysqlPool.cpp;C:\Users\Grain\Desktop\project\server\StatusServer\StatusServer\x64\Debug\MysqlPool.obj
+C:\Users\Grain\Desktop\project\server\StatusServer\RedisMgr.cpp;C:\Users\Grain\Desktop\project\server\StatusServer\StatusServer\x64\Debug\RedisMgr.obj
+C:\Users\Grain\Desktop\project\server\StatusServer\StatusServer.cpp;C:\Users\Grain\Desktop\project\server\StatusServer\StatusServer\x64\Debug\StatusServer.obj
+C:\Users\Grain\Desktop\project\server\StatusServer\StatusServiceImpl.cpp;C:\Users\Grain\Desktop\project\server\StatusServer\StatusServer\x64\Debug\StatusServiceImpl.obj
