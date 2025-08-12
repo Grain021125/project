@@ -21,12 +21,17 @@ private:
     void showTip(QString, bool);
     Ui::LoginDialog *ui;
     QMap<ReqId, std::function<void(const QJsonObject&)>>  _handlers;
+
+    int _uid;
+    QString _token;
 public slots:
     void slot_forget_pwd();
     void slot_login_mod_finish(ReqId, QString, ErrorCodes);
+    void slot_tcp_con_finish(bool);
 signals:
     void switchRegister();
     void switchReset();
+    void sig_connect_tcp(ServerInfo);
 private slots:
     void on_login_button_clicked();
 };

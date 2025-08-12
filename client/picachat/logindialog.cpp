@@ -2,6 +2,7 @@
 #include "ui_logindialog.h"
 #include "clickablelabel.h"
 #include "httpmgr.h"
+#include "tcpmgr.h"
 
 LoginDialog::LoginDialog(QWidget *parent)
     : QDialog(parent)
@@ -18,6 +19,9 @@ LoginDialog::LoginDialog(QWidget *parent)
     connect(ui->forget_label, &ClickableLabel::clicked, this, &LoginDialog::slot_forget_pwd);
 
     connect(HttpMgr::GetInstance().get(), &HttpMgr::sig_login_mod_finish, this, &LoginDialog::slot_login_mod_finish);
+
+    connect(this, &LoginDialog::sig_connect_tcp, TcpMgr::GetInstance().get(), &TcpMgr::slot_tcp_connect);
+    connect(TcpMgr::GetInstance().get(), &TcpMgr::sig_con_success, this, &LoginDialog::slot_tcp_con_finish);
 }
 
 LoginDialog::~LoginDialog()
@@ -43,8 +47,18 @@ void LoginDialog::InitHttpHandlers()
         }
 
         auto user = jsonObj["user"].toString();
-        showTip(tr("登录成功"), true);
-        qDebug() << "user is " << user;
+
+        //发送信号通知TcpMgr发送长链接
+        ServerInfo si;
+        si.Uid = jsonObj["uid"].toInt();
+        si.Host = jsonObj["host"].toString();
+        si.Port = jsonObj["port"].toString();
+        si.Token = jsonObj["token"].toString();
+
+        _uid = si.Uid;
+        _token = si.Token;
+
+        emit sig_connect_tcp(si);
     });
 }
 
@@ -76,6 +90,25 @@ void LoginDialog::slot_login_mod_finish(ReqId id, QString res,ErrorCodes err)
     }
 
     _handlers[id](jsonDoc.object());
+}
+
+void LoginDialog::slot_tcp_con_finish(bool success)
+{
+    if (!success) {
+        showTip("网络异常", false);
+        return;
+    }
+
+    showTip("聊天服务连接成功,正在登录...", true);
+    QJsonObject jsonObj;
+    jsonObj["obj"] = _uid;
+    jsonObj["token"] = _token;
+
+    QJsonDocument doc(jsonObj);
+    QString jsonString = doc.toJson(QJsonDocument::Indented);
+
+    //发送tcp请求给chatServer
+    emit TcpMgr::GetInstance()->sig_send_data(ReqId::ID_CHAT_LOGIN, jsonString);
 }
 
 void LoginDialog::on_login_button_clicked()
