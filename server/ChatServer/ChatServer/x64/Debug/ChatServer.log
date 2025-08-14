@@ -1,0 +1,29 @@
+﻿  C:\Users\Grain\Desktop\project\server\ChatServer\mysqlcppconn-10-vs14.dll
+  C:\Users\Grain\Desktop\project\server\ChatServer\mysqlcppconnx-2-vs14.dll
+  复制了 2 个文件
+  ChatServer.cpp
+  Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
+  - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
+  - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
+  Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
+  CServer.cpp
+  Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
+  - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
+  - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
+  Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
+  CSession.cpp
+  Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
+  - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
+  - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
+  Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
+  RedisMgr.cpp
+  Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
+  - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
+  - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
+  Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
+  正在生成代码...
+CServer.obj : error LNK2019: 无法解析的外部符号 "public: __cdecl CSession::CSession(class boost::asio::io_context &,class CServer *)" (??0CSession@@QEAA@AEAVio_context@asio@boost@@PEAVCServer@@@Z)，函数 "void __cdecl std::_Construct_in_place<class CSession,class boost::asio::io_context &,class CServer *>(class CSession &,class boost::asio::io_context &,class CServer * &&)" (??$_Construct_in_place@VCSession@@AEAVio_context@asio@boost@@PEAVCServer@@@std@@YAXAEAVCSession@@AEAVio_context@asio@boost@@$$QEAPEAVCServer@@@Z) 中引用了该符号
+CServer.obj : error LNK2019: 无法解析的外部符号 "public: class boost::asio::basic_stream_socket<class boost::asio::ip::tcp,class boost::asio::any_io_executor> & __cdecl CSession::GetSocket(void)" (?GetSocket@CSession@@QEAAAEAV?$basic_stream_socket@Vtcp@ip@asio@boost@@Vany_io_executor@34@@asio@boost@@XZ)，函数 "private: void __cdecl CServer::StartAccept(void)" (?StartAccept@CServer@@AEAAXXZ) 中引用了该符号
+CServer.obj : error LNK2019: 无法解析的外部符号 "public: void __cdecl CSession::Start(void)" (?Start@CSession@@QEAAXXZ)，函数 "private: void __cdecl CServer::HandleAccept(class std::shared_ptr<class CSession>,class boost::system::error_code const &)" (?HandleAccept@CServer@@AEAAXV?$shared_ptr@VCSession@@@std@@AEBVerror_code@system@boost@@@Z) 中引用了该符号
+CServer.obj : error LNK2019: 无法解析的外部符号 "public: class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl CSession::GetUuid(void)" (?GetUuid@CSession@@QEAA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ)，函数 "private: void __cdecl CServer::HandleAccept(class std::shared_ptr<class CSession>,class boost::system::error_code const &)" (?HandleAccept@CServer@@AEAAXV?$shared_ptr@VCSession@@@std@@AEBVerror_code@system@boost@@@Z) 中引用了该符号
+C:\Users\Grain\Desktop\project\server\ChatServer\x64\Debug\ChatServer.exe : fatal error LNK1120: 4 个无法解析的外部命令
