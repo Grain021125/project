@@ -10,6 +10,7 @@ namespace net = boost::asio;            // from <boost/asio.hpp>
 using tcp = boost::asio::ip::tcp;       // from <boost/asio/ip/tcp.hpp>
 
 class CServer;
+class LogicNode;
 
 class CSession: public std::enable_shared_from_this<CSession>
 {
@@ -21,6 +22,7 @@ public:
 	tcp::socket& GetSocket();
 	void Start();
 	std::string GetSessionID();
+	std::string GetUserId();
 
 	void AsyncReadHead(int);
 	void AsyncReadBody(int);
@@ -32,10 +34,22 @@ private:
 	bool _b_close;
 	bool _b_head_parse;
 	std::string _session_id;
-	std::shared_ptr<MsgNode> _recv_head_node;
-	char _head_buffer[HEAD_TOTAL_LEN];
-	char _body_buffer[1024 * 64]; // 1MB buffer for body
-	std::mutex _mutex; // Protects the session state
 
+	std::shared_ptr<MsgNode> _recv_head_node;
+	std::shared_ptr<RecvNode> _recv_msg_node;
+
+	std::array<char, HEAD_TOTAL_LEN> _head_buffer;
+	std::array<char, MAX_DATA_LENGTH> _body_buffer; // At most 64KB buffer for body
+
+	std::mutex _mutex; // Protects the session state
+};
+
+class LogicNode {
+	public:
+	LogicNode(std::shared_ptr<CSession> session, std::shared_ptr<RecvNode> msg_node)
+		: _session(session), _msg_node(msg_node) {}
+private:
+	std::shared_ptr<CSession> _session;
+	std::shared_ptr<RecvNode> _msg_node;
 };
 

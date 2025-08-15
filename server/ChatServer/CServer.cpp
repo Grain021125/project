@@ -1,15 +1,27 @@
 #include "CServer.h"
 
 CServer::CServer(boost::asio::io_context& io_context, short port):
-	_io_context(io_context), _port(port), _acceptor(io_context, tcp::endpoint(tcp::v4(), port))
+	_io_context(io_context), _port(port), _acceptor(_io_context, tcp::endpoint(tcp::v4(), port))
 {
 	std::cout << "Server start success, listen on port: " << _port << std::endl;
-	StartAccept();
 }
 
 CServer::~CServer()
 {
 	std::cout << "Server stop" << std::endl;
+}
+
+void CServer::ClearSessions(std::string session_id)
+{
+	std::lock_guard<std::mutex> lock(_mutex);
+	if (_sessions.find(session_id) != _sessions.end()) {
+		auto uid = _sessions[session_id]->GetUserId();
+
+		//移除用户和session的关联
+		//UserMgr::GetInstance()->RmvUserSession(uid, session_id);
+	}
+
+	_sessions.erase(session_id);
 }
 
 void CServer::StartAccept() {
@@ -31,10 +43,12 @@ void CServer::HandleAccept(std::shared_ptr<CSession> session, const boost::syste
 		std::cout << "New connection accepted" << std::endl;
 		session->Start();
 		std::lock_guard<std::mutex> lock(_mutex);
-		_sessions.insert(std::make_pair(session->GetUuid(), session));
+		_sessions.insert(std::make_pair(session->GetSessionID(), session));
+		StartAccept(); // 继续接受新的连接
 	}
 	else {
 		std::cerr << "Error on accept: " << error.what() << std::endl;
+		StartAccept(); // 即使发生错误也继续尝试接受新的连接
 	}
 
 	StartAccept();

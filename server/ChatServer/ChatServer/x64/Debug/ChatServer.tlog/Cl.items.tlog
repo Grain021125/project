@@ -1,0 +1,12 @@
+C:\Users\Grain\Desktop\project\server\ChatServer\AsioIOServicePool.cpp;C:\Users\Grain\Desktop\project\server\ChatServer\ChatServer\x64\Debug\AsioIOServicePool.obj
+C:\Users\Grain\Desktop\project\server\ChatServer\ChatServer.cpp;C:\Users\Grain\Desktop\project\server\ChatServer\ChatServer\x64\Debug\ChatServer.obj
+C:\Users\Grain\Desktop\project\server\ChatServer\ConfigMgr.cpp;C:\Users\Grain\Desktop\project\server\ChatServer\ChatServer\x64\Debug\ConfigMgr.obj
+C:\Users\Grain\Desktop\project\server\ChatServer\CServer.cpp;C:\Users\Grain\Desktop\project\server\ChatServer\ChatServer\x64\Debug\CServer.obj
+C:\Users\Grain\Desktop\project\server\ChatServer\CSession.cpp;C:\Users\Grain\Desktop\project\server\ChatServer\ChatServer\x64\Debug\CSession.obj
+C:\Users\Grain\Desktop\project\server\ChatServer\message.grpc.pb.cc;C:\Users\Grain\Desktop\project\server\ChatServer\ChatServer\x64\Debug\message.grpc.pb.obj
+C:\Users\Grain\Desktop\project\server\ChatServer\message.pb.cc;C:\Users\Grain\Desktop\project\server\ChatServer\ChatServer\x64\Debug\message.pb.obj
+C:\Users\Grain\Desktop\project\server\ChatServer\MsgNode.cpp;C:\Users\Grain\Desktop\project\server\ChatServer\ChatServer\x64\Debug\MsgNode.obj
+C:\Users\Grain\Desktop\project\server\ChatServer\MysqlDAO.cpp;C:\Users\Grain\Desktop\project\server\ChatServer\ChatServer\x64\Debug\MysqlDAO.obj
+C:\Users\Grain\Desktop\project\server\ChatServer\MysqlMgr.cpp;C:\Users\Grain\Desktop\project\server\ChatServer\ChatServer\x64\Debug\MysqlMgr.obj
+C:\Users\Grain\Desktop\project\server\ChatServer\MysqlPool.cpp;C:\Users\Grain\Desktop\project\server\ChatServer\ChatServer\x64\Debug\MysqlPool.obj
+C:\Users\Grain\Desktop\project\server\ChatServer\RedisMgr.cpp;C:\Users\Grain\Desktop\project\server\ChatServer\ChatServer\x64\Debug\RedisMgr.obj

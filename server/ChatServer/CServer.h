@@ -15,9 +15,9 @@ public:
 	CServer(boost::asio::io_context& io_context, short port);
 	~CServer();
 	void ClearSessions(std::string);
+	void StartAccept();
 private:
 	void HandleAccept(std::shared_ptr<CSession> session, const boost::system::error_code& error);
-	void StartAccept();
 
 	boost::asio::io_context& _io_context;
 	short _port;

@@ -26,7 +26,13 @@
 #include <stdio.h>
 
 #define USERTOKENPREFIX  "utoken_"
+
+#define MAX_ID_LENGTH  1024
+#define MAX_DATA_LENGTH  1024 * 64 // 64KB for data length
+
 #define HEAD_TOTAL_LEN 4
+#define HEAD_ID_LEN 2
+#define HEAD_DATA_LEN 2
 
 namespace beast = boost::beast;
 namespace http = beast::http;
