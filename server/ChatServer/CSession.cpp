@@ -135,3 +135,47 @@ void CSession::AsyncReadBody(int total_len)
 		}
 		});
 }
+
+void CSession::AsyncSend(const char* msg, uint16_t msg_id, uint16_t msg_len)
+{
+	std::lock_guard<std::mutex> lock(_send_mutex);
+	auto self = shared_from_this();
+	int send_queue_size = _send_queue.size();
+	if (send_queue_size >= MAX_SENDQUE_SIZE) {
+		std::cout << "Session" << _session_id << "Send queue size exceeds maximum limit: " << send_queue_size << std::endl;
+		return; // 队列已满，直接返回
+	}
+
+	_send_queue.push_back(std::make_shared<SendNode>(msg, msg_id, msg_len));
+	if (send_queue_size > 0) {
+		return;
+	}
+
+	auto& msgnode = _send_queue.front();
+	boost::asio::async_write(_socket, boost::asio::buffer(msgnode->_data, msgnode->_total_len),
+		[this, self](const boost::system::error_code& ec, std::size_t bytes_transfered) {
+			HandleSend(ec, self);
+		});
+}
+
+void CSession::HandleSend(const boost::system::error_code& ec, std::shared_ptr<CSession> shared_self)
+{
+	try
+	{
+		if (!ec) {
+			std::lock_guard<std::mutex> lock(_send_mutex);
+			_send_queue.pop_front(); // 发送成功后移除队列头部的消息
+			if (!_send_queue.empty()) {
+				auto& msgnode = _send_queue.front();
+				boost::asio::async_write(_socket, boost::asio::buffer(msgnode->_data, msgnode->_total_len),
+					[this, shared_self](const boost::system::error_code& ec, std::size_t byte_transfered) {
+						HandleSend(ec, shared_self);
+					});
+			}
+		}
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << "Exception in HandleSend: " << e.what() << std::endl;
+	}
+}

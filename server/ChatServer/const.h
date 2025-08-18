@@ -34,6 +34,8 @@
 #define HEAD_ID_LEN 2
 #define HEAD_DATA_LEN 2
 
+#define MAX_SENDQUE_SIZE 1000 // Maximum size of the send queue
+
 namespace beast = boost::beast;
 namespace http = beast::http;
 namespace net = boost::asio;
@@ -50,6 +52,12 @@ enum ErrorCodes {
 	PASSWORD_WRONG = 1007,
 	UID_INVALID = 1008,
 	TOKEN_INVALID = 1009,
+};
+
+enum MsgIds{
+	MSG_CHAT_LOGIN = 1005,
+	MSG_CHAT_LOGIN_RSP = 1006,
+	// Add other message IDs as needed
 };
 
 class Defer {

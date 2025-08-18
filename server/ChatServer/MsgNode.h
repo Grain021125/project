@@ -35,7 +35,7 @@ class RecvNode :public MsgNode {
 	friend class LogicSystem;
 public:
 	RecvNode(std::uint16_t max_len, std::uint16_t msg_id);
-private:
+
 	uint16_t _msg_id;
 };
 
@@ -43,7 +43,7 @@ class SendNode :public MsgNode {
 	friend class LogicSystem;
 public:
 	SendNode(const char* msg, std::uint16_t max_len, std::uint16_t msg_id);
-private:
+
 	uint16_t _msg_id;
 };
 

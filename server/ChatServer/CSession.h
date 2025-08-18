@@ -27,6 +27,10 @@ public:
 	void AsyncReadHead(int);
 	void AsyncReadBody(int);
 
+	void AsyncSend(const char*, uint16_t, uint16_t);
+	void HandleSend(const boost::system::error_code&, std::shared_ptr<CSession>);
+	
+
 	void Close();
 private:
 	tcp::socket _socket;
@@ -41,14 +45,17 @@ private:
 	std::array<char, HEAD_TOTAL_LEN> _head_buffer;
 	std::array<char, MAX_DATA_LENGTH> _body_buffer; // At most 64KB buffer for body
 
+	std::deque<std::shared_ptr<SendNode>> _send_queue; // Queue for outgoing messages
+
 	std::mutex _mutex; // Protects the session state
+	std::mutex _send_mutex; // Protects the send operation
 };
 
 class LogicNode {
 	public:
 	LogicNode(std::shared_ptr<CSession> session, std::shared_ptr<RecvNode> msg_node)
 		: _session(session), _msg_node(msg_node) {}
-private:
+
 	std::shared_ptr<CSession> _session;
 	std::shared_ptr<RecvNode> _msg_node;
 };

@@ -10,14 +10,17 @@ class LogicSystem : public Singleton<LogicSystem>
 public:
 	~LogicSystem();
 	void PostMsgToQue(std::shared_ptr<LogicNode> msg);
+	void DealMsg();
 private:
 	LogicSystem();
 	void RegisterCallBacks();
-	void LoginHandler(std::shared_ptr<CSession> session,std::shared_ptr<LogicNode> msg_node);
+	void LoginHandler(std::shared_ptr<CSession> session, const short& msg_id, const std::string& msg_data);
 
 	std::queue<std::shared_ptr<LogicNode>> _msg_queue; // 存储待处理的消息队列
 	std::mutex _mutex; // 保护_fun_callbacks的互斥锁
 	bool _b_stop = false;
-	std::vector<uint16_t, FunCallBack> _fun_callbacks; // 存储消息ID和对应的处理函数
+	std::condition_variable _consume; // 条件变量，用于通知处理线程
+	std::map<uint16_t, FunCallBack> _fun_callbacks; // 存储消息ID和对应的处理函数
+	std::thread _worker_thread; // 处理消息的工作线程
 };
 
