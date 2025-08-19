@@ -28,6 +28,7 @@ public slots:
     void slot_forget_pwd();
     void slot_login_mod_finish(ReqId, QString, ErrorCodes);
     void slot_tcp_con_finish(bool);
+    void slot_switch_chatdialg();
 signals:
     void switchRegister();
     void switchReset();

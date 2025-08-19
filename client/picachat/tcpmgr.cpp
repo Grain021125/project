@@ -1,4 +1,5 @@
 #include "tcpmgr.h"
+#include "usermgr.h"
 #include <QAbstractSocket>
 #include <QJsonDocument>
 
@@ -89,9 +90,13 @@ void TcpMgr::initHandlers()
         int err = jsonObj["error"].toInt();
         if (err != ErrorCodes::SUCCESS) {
             qDebug() << "Login Faild, error is " << err;
+            emit sig_login_faild(err);
             return;
         }
 
+        UserMgr::GetInstance()->SetUid(jsonObj["uid"].toInt());
+        UserMgr::GetInstance()->SetName(jsonObj["name"].toString());
+        UserMgr::GetInstance()->SetToken(jsonObj["token"].toString());
         emit sig_switch_chatdialg();
     });
 }
@@ -137,5 +142,12 @@ void TcpMgr::slot_tcp_connect(ServerInfo si)
     _port = static_cast<uint16_t>(si.Port.toUInt());
 
     qDebug() << _host << " " << _port;
-    _socket.connectToHost(si.Host, _port);
+    if (_socket.state() != QAbstractSocket::UnconnectedState) {
+        connect(&_socket, &QTcpSocket::disconnected, this, [this, si]() {
+            _socket.connectToHost(si.Host, _port);
+        });
+        _socket.disconnectFromHost();
+    } else {
+        _socket.connectToHost(si.Host, _port);
+    }
 }

@@ -7,6 +7,7 @@ debug/mainwindow.o
 debug/registerdialog.o
 debug/tcpmgr.o
 debug/timerbtn.o
+debug/usermgr.o
 debug/qrc_rc.o
 debug/moc_clickablelabel.o
 debug/moc_httpmgr.o
@@ -15,3 +16,4 @@ debug/moc_mainwindow.o
 debug/moc_registerdialog.o
 debug/moc_tcpmgr.o
 debug/moc_timerbtn.o
+debug/moc_usermgr.o

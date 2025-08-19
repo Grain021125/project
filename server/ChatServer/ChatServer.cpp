@@ -18,7 +18,7 @@ int main()
 				pool->Stop();
 			}
 			});
-		std::string port_str = cfg["SelfServer"]["Port"];
+		std::string port_str = cfg["ChatServer1"]["Port"];
 		auto server_ptr = std::make_shared<CServer>(io_context, atoi(port_str.c_str()));
 		server_ptr->StartAccept();
 		io_context.run();

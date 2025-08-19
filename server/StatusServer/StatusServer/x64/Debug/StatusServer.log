@@ -2,7 +2,6 @@
   C:\Users\Grain\Desktop\project\server\StatusServer\mysqlcppconnx-2-vs14.dll
   复制了 2 个文件
   StatusServiceImpl.cpp
-C:\Users\Grain\Desktop\project\server\StatusServer\StatusServiceImpl.cpp(90,1): warning C4715: “StatusServiceImpl::Login”: 不是所有的控件路径都返回值
   StatusServer.vcxproj -> C:\Users\Grain\Desktop\project\server\StatusServer\x64\Debug\StatusServer.exe
   C:\Users\Grain\Desktop\project\server\StatusServer\config.ini
   复制了 1 个文件

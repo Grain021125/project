@@ -33,6 +33,7 @@ signals:
     void sig_con_success(bool);
     void sig_send_data(ReqId reqId, QString data);
     void sig_switch_chatdialg();
+    void sig_login_faild(int);
 };
 
 #endif // TCPMGR_H

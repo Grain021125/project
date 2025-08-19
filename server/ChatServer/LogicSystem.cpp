@@ -40,12 +40,12 @@ void LogicSystem::LoginHandler(std::shared_ptr<CSession> session, const short& m
 
 	//内存中查询用户信息
 	auto find_iter = _users.find(uid);
-	std::shared_ptr<UserInfo> user_info = nullptr;
+	std::shared_ptr<UserInfo> user_info;
 	if (find_iter == _users.end()) {
 		//查询数据库
-		user_info = MysqlMgr::GetInstance()->GetUser(uid);
+		user_info = std::make_shared<UserInfo>(MysqlMgr::GetInstance()->GetUser(uid));
 		if (user_info == nullptr) {
-			rsp_root["error"] = ErrorCodes::UidInvalid;
+			rsp_root["error"] = ErrorCodes::UID_INVALID;
 			return;
 		}
 
@@ -58,9 +58,6 @@ void LogicSystem::LoginHandler(std::shared_ptr<CSession> session, const short& m
 	rsp_root["uid"] = uid;
 	rsp_root["token"] = rsp.token();
 	rsp_root["name"] = user_info->name;
-
-
-
 }
 
 LogicSystem::~LogicSystem()

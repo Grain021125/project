@@ -6,6 +6,10 @@
 CSession::CSession(boost::asio::io_context& io_context, CServer* server)
 	: _socket(io_context), _server(server), _session_id(boost::uuids::to_string(boost::uuids::random_generator()())), _b_close(false), _b_head_parse(false)
 {
+	// 初始化消息节点
+	_recv_head_node = std::make_shared<MsgNode>(HEAD_TOTAL_LEN);
+	_recv_msg_node = std::make_shared<RecvNode>(0, 0); // 初始时没有消息长度和ID
+
 	std::cout << "New session created with ID: " << _session_id << std::endl;
 }
 
@@ -61,11 +65,12 @@ void CSession::AsyncReadHead(int total_len)
 				return;
 			}
 
-			_recv_head_node->Clear();
+			if (_recv_head_node)
+				_recv_head_node->Clear();
 			memcpy(_recv_head_node->_data, _head_buffer.data(), bytes_tranfered);
 
 			//解析头部数据: MSG_ID + MSG_LEN
-			std::uint16_t msg_id = 0;
+			std::uint16_t msg_id;
 			memcpy(&msg_id, _recv_head_node->_data, HEAD_ID_LEN);
 
 			msg_id = ntohs(msg_id); // 转换为主机字节序
@@ -89,7 +94,7 @@ void CSession::AsyncReadHead(int total_len)
 				return;
 			}
 
-			_recv_msg_node = std::make_shared<RecvNode>(msg_len, msg_id);
+			_recv_msg_node = std::make_shared<RecvNode>(msg_id, msg_len);
 
 			AsyncReadBody(msg_len);
 		}

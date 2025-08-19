@@ -55,8 +55,8 @@ enum ErrorCodes {
 };
 
 enum MsgIds{
-	MSG_CHAT_LOGIN = 1005,
-	MSG_CHAT_LOGIN_RSP = 1006,
+	MSG_CHAT_LOGIN = 1004,
+	MSG_CHAT_LOGIN_RSP = 1005,
 	// Add other message IDs as needed
 };
 

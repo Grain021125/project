@@ -147,6 +147,10 @@ void RegisterDialog::initHttpHandlers()
     _handlers.insert(ReqId::ID_REG_USER, [this](const QJsonObject& jsonObj){
         int error = jsonObj["error"].toInt();
         if (error != ErrorCodes::SUCCESS) {
+            if (error == 1004) {
+                showTip(tr("用户名或邮箱已经存在"), false);
+                return;
+            }
             showTip(tr("注册信息有误"), false);
             return;
         }

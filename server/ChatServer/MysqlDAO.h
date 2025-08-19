@@ -17,6 +17,7 @@ public:
 	~MysqlDAO() = default;
 	int RegUser(const std::string& name, const std::string& email, const std::string& pwd);
 	int CheckUser(const std::string& name, const std::string& password, UserInfo& userInfo);
+	UserInfo GetUser(int uid);
 private:
 	std::unique_ptr<MysqlPool> _pool;
 };

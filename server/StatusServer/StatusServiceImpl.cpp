@@ -80,6 +80,8 @@ Status StatusServiceImpl::Login(ServerContext* context, const LoginReq* request,
 		return Status::OK;
     }
 
+	std::cout << "token key: " << token_key << std::endl;
+    std::cout << token << " | " << token_value << std::endl;
 	if (token_value != token) {
         reply->set_error(ErrorCodes::TOKEN_INVALID);
         return Status::OK;
@@ -87,6 +89,7 @@ Status StatusServiceImpl::Login(ServerContext* context, const LoginReq* request,
     reply->set_error(ErrorCodes::SUCCESS);
     reply->set_uid(uid);
     reply->set_token(token_value);
+    return Status::OK;
 }
 
 void StatusServiceImpl::insertToken(int uid, const std::string& token)

@@ -3,6 +3,7 @@
 #include "clickablelabel.h"
 #include "httpmgr.h"
 #include "tcpmgr.h"
+#include <QString>
 
 LoginDialog::LoginDialog(QWidget *parent)
     : QDialog(parent)
@@ -22,6 +23,10 @@ LoginDialog::LoginDialog(QWidget *parent)
 
     connect(this, &LoginDialog::sig_connect_tcp, TcpMgr::GetInstance().get(), &TcpMgr::slot_tcp_connect);
     connect(TcpMgr::GetInstance().get(), &TcpMgr::sig_con_success, this, &LoginDialog::slot_tcp_con_finish);
+    connect(TcpMgr::GetInstance().get(), &TcpMgr::sig_login_faild, [this](int err) {
+        showTip(QString("登录失败, 错误码 %1").arg(err), false);
+    });
+    connect(TcpMgr::GetInstance().get(), &TcpMgr::sig_switch_chatdialg, this, &LoginDialog::slot_switch_chatdialg);
 }
 
 LoginDialog::~LoginDialog()
@@ -101,7 +106,7 @@ void LoginDialog::slot_tcp_con_finish(bool success)
 
     showTip("聊天服务连接成功,正在登录...", true);
     QJsonObject jsonObj;
-    jsonObj["obj"] = _uid;
+    jsonObj["uid"] = _uid;
     jsonObj["token"] = _token;
 
     QJsonDocument doc(jsonObj);
@@ -109,6 +114,11 @@ void LoginDialog::slot_tcp_con_finish(bool success)
 
     //发送tcp请求给chatServer
     emit TcpMgr::GetInstance()->sig_send_data(ReqId::ID_CHAT_LOGIN, jsonString);
+}
+
+void LoginDialog::slot_switch_chatdialg()
+{
+    showTip("等待跳转...", true);
 }
 
 void LoginDialog::on_login_button_clicked()

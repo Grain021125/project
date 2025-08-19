@@ -1,12 +1,12 @@
 #include "MsgNode.h"
 
-RecvNode::RecvNode(std::uint16_t max_len, std::uint16_t msg_id) :MsgNode(max_len),
+RecvNode::RecvNode(std::uint16_t msg_id, std::uint16_t max_len) :MsgNode(max_len),
 _msg_id(msg_id) {
 
 }
 
 
-SendNode::SendNode(const char* msg, std::uint16_t max_len, std::uint16_t msg_id) :MsgNode(max_len + HEAD_TOTAL_LEN)
+SendNode::SendNode(const char* msg, std::uint16_t msg_id, std::uint16_t max_len) :MsgNode(max_len + HEAD_TOTAL_LEN)
 , _msg_id(msg_id) {
 	//先发送id, 转为网络字节序
 	short msg_id_host = boost::asio::detail::socket_ops::host_to_network_short(msg_id);

@@ -21,7 +21,8 @@ SOURCES += \
     mainwindow.cpp \
     registerdialog.cpp \
     tcpmgr.cpp \
-    timerbtn.cpp
+    timerbtn.cpp \
+    usermgr.cpp
 
 HEADERS += \
     clickablelabel.h \
@@ -32,7 +33,8 @@ HEADERS += \
     registerdialog.h \
     singleton.h \
     tcpmgr.h \
-    timerbtn.h
+    timerbtn.h \
+    usermgr.h
 
 FORMS += \
     mainwindow.ui \

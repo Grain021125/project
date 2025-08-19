@@ -50,6 +50,7 @@ template <> constexpr inline auto LoginDialog::qt_create_metaobjectdata<qt_meta_
         "ReqId",
         "ErrorCodes",
         "slot_tcp_con_finish",
+        "slot_switch_chatdialg",
         "on_login_button_clicked"
     };
 
@@ -72,8 +73,10 @@ template <> constexpr inline auto LoginDialog::qt_create_metaobjectdata<qt_meta_
         QtMocHelpers::SlotData<void(bool)>(10, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::Bool, 2 },
         }}),
+        // Slot 'slot_switch_chatdialg'
+        QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'on_login_button_clicked'
-        QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(12, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -103,7 +106,8 @@ void LoginDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 3: _t->slot_forget_pwd(); break;
         case 4: _t->slot_login_mod_finish((*reinterpret_cast< std::add_pointer_t<ReqId>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<ErrorCodes>>(_a[3]))); break;
         case 5: _t->slot_tcp_con_finish((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
-        case 6: _t->on_login_button_clicked(); break;
+        case 6: _t->slot_switch_chatdialg(); break;
+        case 7: _t->on_login_button_clicked(); break;
         default: ;
         }
     }
@@ -136,14 +140,14 @@ int LoginDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 8;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 7)
+        if (_id < 8)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 7;
+        _id -= 8;
     }
     return _id;
 }

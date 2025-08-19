@@ -7,6 +7,7 @@ release/mainwindow.o
 release/registerdialog.o
 release/tcpmgr.o
 release/timerbtn.o
+release/usermgr.o
 release/qrc_rc.o
 release/moc_clickablelabel.o
 release/moc_httpmgr.o
@@ -15,3 +16,4 @@ release/moc_mainwindow.o
 release/moc_registerdialog.o
 release/moc_tcpmgr.o
 release/moc_timerbtn.o
+release/moc_usermgr.o

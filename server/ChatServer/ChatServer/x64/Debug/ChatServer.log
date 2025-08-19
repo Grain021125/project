@@ -6,10 +6,8 @@
   - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
   - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
   Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
-C:\Users\Grain\Desktop\project\server\ChatServer\CSession.cpp(123,32): warning C4244: “+=”: 从“unsigned __int64”转换到“uint16_t”，可能丢失数据
-C:\Users\Grain\Desktop\project\server\ChatServer\CSession.cpp(143,22): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-  StatusGrpcClient.cpp
-  正在生成代码...
+C:\Users\Grain\Desktop\project\server\ChatServer\CSession.cpp(128,32): warning C4244: “+=”: 从“unsigned __int64”转换到“uint16_t”，可能丢失数据
+C:\Users\Grain\Desktop\project\server\ChatServer\CSession.cpp(148,22): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
   ChatServer.vcxproj -> C:\Users\Grain\Desktop\project\server\ChatServer\x64\Debug\ChatServer.exe
   C:\Users\Grain\Desktop\project\server\ChatServer\config.ini
   复制了 1 个文件

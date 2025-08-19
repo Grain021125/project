@@ -123,3 +123,45 @@ int MysqlDAO::CheckUser(const std::string& name, const std::string& password, Us
 		return 0;
 	}
 }
+
+UserInfo MysqlDAO::GetUser(int uid) {
+	auto connection = _pool->getConnection();
+	Defer defer([this, &connection]() {
+		if (connection) {
+			_pool->returnConnection(std::move(connection));
+		}
+		});
+	if (connection == nullptr) {
+		std::cout << "MysqlDAO::GetUser: Failed to get connection from pool." << std::endl;
+		return {};
+	}
+	try
+	{
+		std::unique_ptr<sql::PreparedStatement> pstmt(connection->getConnection().prepareStatement("SELECT * FROM user WHERE uid = ?"));
+		pstmt->setInt(1, uid);
+		std::unique_ptr<sql::ResultSet> res(pstmt->executeQuery());
+
+		if (!res->next()) {
+			std::cout << "MysqlDAO::GetUser: User not found." << std::endl;
+			return {}; // 用户不存在
+		}
+		res->beforeFirst();
+		UserInfo userInfo;
+
+		while (res->next()) {
+			userInfo.uid = uid;
+			userInfo.name = res->getString("name");
+			userInfo.email = res->getString("email");
+			userInfo.password = res->getString("password");
+			break;
+		}
+		return userInfo;
+	}
+	catch (const sql::SQLException& err)
+	{
+		std::cerr << "DAO: SQLException: " << err.what();
+		std::cerr << " (MySQL error code: " << err.getErrorCode();
+		std::cerr << ", SQLState: " << err.getSQLState() << ")" << std::endl;
+		return {};
+	}
+}
