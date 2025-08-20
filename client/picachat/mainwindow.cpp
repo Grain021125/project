@@ -14,12 +14,16 @@ MainWindow::MainWindow(QWidget *parent)
     _login_dialg = new LoginDialog(this);
     setCentralWidget(_login_dialg);
     _login_dialg->setWindowFlags(Qt::CustomizeWindowHint | Qt::FramelessWindowHint);
+    SlotSwitchChat();
 
     // 创建和注册消息链接
     connect(_login_dialg, &LoginDialog::switchRegister, this, &MainWindow::SlotSwitchReg);
 
     // 连接登陆页面忘记密码信号
     connect(_login_dialg, &LoginDialog::switchReset, this, &MainWindow::SlotSwitchReset);
+
+    // 连接聊天页面跳转
+    connect(_login_dialg, &LoginDialog::switchChat, this, &MainWindow::SlotSwitchChat);
 }
 
 MainWindow::~MainWindow()
@@ -63,5 +67,16 @@ void MainWindow::SlotSwitchReset()
     // _reset_dialg->show();
     // //注册返回登录信号和槽函数
     // connect(_reset_dialg, &ResetDialog::switchLogin, this, &MainWindow::SlotSwitchLogin2);
+}
+
+void MainWindow::SlotSwitchChat()
+{
+    _chat_dialg = new ChatDialog();
+    _chat_dialg->setWindowFlags(Qt::CustomizeWindowHint | Qt::FramelessWindowHint);
+    setCentralWidget(_chat_dialg);
+    _chat_dialg->show();
+    _login_dialg->hide();
+    this->setMinimumSize(QSize(1050,900));
+    this->setMaximumSize(QWIDGETSIZE_MAX, QWIDGETSIZE_MAX);
 }
 

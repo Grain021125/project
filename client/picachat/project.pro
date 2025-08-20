@@ -13,7 +13,12 @@ UI_DIR= ./UI
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    chatdialog.cpp \
+    chatuserlist.cpp \
+    chatuserwid.cpp \
     clickablelabel.cpp \
+    clickedbtn.cpp \
+    customizeedit.cpp \
     global.cpp \
     httpmgr.cpp \
     logindialog.cpp \
@@ -25,7 +30,12 @@ SOURCES += \
     usermgr.cpp
 
 HEADERS += \
+    chatdialog.h \
+    chatuserlist.h \
+    chatuserwid.h \
     clickablelabel.h \
+    clickedbtn.h \
+    customizeedit.h \
     global.h \
     httpmgr.h \
     logindialog.h \
@@ -37,6 +47,8 @@ HEADERS += \
     usermgr.h
 
 FORMS += \
+    chatdialog.ui \
+    chatuserwid.ui \
     mainwindow.ui \
     logindialog.ui \
     registerdialog.ui

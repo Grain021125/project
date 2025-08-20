@@ -80,8 +80,6 @@ Status StatusServiceImpl::Login(ServerContext* context, const LoginReq* request,
 		return Status::OK;
     }
 
-	std::cout << "token key: " << token_key << std::endl;
-    std::cout << token << " | " << token_value << std::endl;
 	if (token_value != token) {
         reply->set_error(ErrorCodes::TOKEN_INVALID);
         return Status::OK;

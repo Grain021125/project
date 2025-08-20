@@ -45,6 +45,7 @@ struct ServerInfo{
     QString Token;
 };
 
+
 extern QString gate_url_prefix;
 
 #endif // GLOBAL_H

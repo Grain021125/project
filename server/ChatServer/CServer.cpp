@@ -40,15 +40,13 @@ void CServer::StartAccept() {
 
 void CServer::HandleAccept(std::shared_ptr<CSession> session, const boost::system::error_code& error) {
 	if (!error) {
-		std::cout << "New connection accepted" << std::endl;
+		std::cout << "New connection accepted by seesion " << session->GetSessionID() << std::endl;
 		session->Start();
 		std::lock_guard<std::mutex> lock(_mutex);
 		_sessions.insert(std::make_pair(session->GetSessionID(), session));
-		StartAccept(); // 继续接受新的连接
 	}
 	else {
 		std::cerr << "Error on accept: " << error.what() << std::endl;
-		StartAccept(); // 即使发生错误也继续尝试接受新的连接
 	}
 
 	StartAccept();

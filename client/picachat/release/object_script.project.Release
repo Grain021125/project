@@ -1,4 +1,8 @@
+release/chatdialog.o
+release/chatuserlist.o
 release/clickablelabel.o
+release/clickedbtn.o
+release/customizeedit.o
 release/global.o
 release/httpmgr.o
 release/logindialog.o
@@ -9,7 +13,11 @@ release/tcpmgr.o
 release/timerbtn.o
 release/usermgr.o
 release/qrc_rc.o
+release/moc_chatdialog.o
+release/moc_chatuserlist.o
 release/moc_clickablelabel.o
+release/moc_clickedbtn.o
+release/moc_customizeedit.o
 release/moc_httpmgr.o
 release/moc_logindialog.o
 release/moc_mainwindow.o

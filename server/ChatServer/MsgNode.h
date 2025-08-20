@@ -20,6 +20,7 @@ public:
 		delete[] _data;
 		_data = nullptr;
 		_cur_len = 0;
+		std::cout << "msgnode destruct" << std::endl;
 	}
 
 	void Clear() {

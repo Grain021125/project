@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <logindialog.h>
 #include <registerdialog.h>
+#include <chatdialog.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -23,9 +24,11 @@ public slots:
     void SlotSwitchReg();
     void SlotSwitchLogin();
     void SlotSwitchReset();
+    void SlotSwitchChat();
 private:
     Ui::MainWindow *ui;
     LoginDialog * _login_dialg;
     RegisterDialog * _reg_dialg;
+    ChatDialog * _chat_dialg;
 };
 #endif // MAINWINDOW_H

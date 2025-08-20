@@ -119,6 +119,7 @@ void LoginDialog::slot_tcp_con_finish(bool success)
 void LoginDialog::slot_switch_chatdialg()
 {
     showTip("等待跳转...", true);
+    emit switchChat();
 }
 
 void LoginDialog::on_login_button_clicked()

@@ -33,6 +33,7 @@ signals:
     void switchRegister();
     void switchReset();
     void sig_connect_tcp(ServerInfo);
+    void switchChat();
 private slots:
     void on_login_button_clicked();
 };
