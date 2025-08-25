@@ -23,6 +23,8 @@ public:
     ~ChatDialog();
 
 private:
+    void addChatUserList();
+
     Ui::ChatDialog *ui;
     ChatUIMode _mode;
     ChatUIMode _state;

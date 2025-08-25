@@ -24,6 +24,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // 连接聊天页面跳转
     connect(_login_dialg, &LoginDialog::switchChat, this, &MainWindow::SlotSwitchChat);
+
 }
 
 MainWindow::~MainWindow()
@@ -73,6 +74,7 @@ void MainWindow::SlotSwitchChat()
 {
     _chat_dialg = new ChatDialog();
     _chat_dialg->setWindowFlags(Qt::CustomizeWindowHint | Qt::FramelessWindowHint);
+    ui->statusbar->hide();
     setCentralWidget(_chat_dialg);
     _chat_dialg->show();
     _login_dialg->hide();

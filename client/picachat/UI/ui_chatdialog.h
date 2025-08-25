@@ -15,13 +15,14 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QListWidget>
-#include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
-#include <QtWidgets/QTextEdit>
+#include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 #include <clickedbtn.h>
+#include "chatpage.h"
 #include "chatuserlist.h"
+#include "clickedlabel.h"
 #include "customizeedit.h"
 
 QT_BEGIN_NAMESPACE
@@ -35,8 +36,8 @@ public:
     QWidget *widget;
     QVBoxLayout *verticalLayout_3;
     QLabel *side_head_lab;
-    QLabel *side_chat_lab;
-    QLabel *side_contact_lab;
+    ClickedLabel *side_chat_lab;
+    ClickedLabel *side_contact_lab;
     QSpacerItem *verticalSpacer;
     QWidget *chat_user_wid;
     QVBoxLayout *verticalLayout;
@@ -48,35 +49,15 @@ public:
     ChatUserList *chat_user_list;
     QListWidget *search_list;
     QListWidget *con_user_list;
-    QWidget *chat_data_wid;
-    QVBoxLayout *verticalLayout_4;
-    QWidget *title_wid;
-    QHBoxLayout *horizontalLayout_3;
-    QWidget *widget_2;
-    QVBoxLayout *verticalLayout_5;
-    QLabel *title_lab;
-    QWidget *chat_data_list;
-    QWidget *tool_wid;
-    QHBoxLayout *horizontalLayout_4;
-    QSpacerItem *horizontalSpacer_2;
-    QLabel *emoj_lab;
-    QSpacerItem *horizontalSpacer_3;
-    QLabel *file_lab;
-    QSpacerItem *horizontalSpacer_4;
-    QTextEdit *chatEdit;
-    QWidget *send_wid;
-    QHBoxLayout *horizontalLayout_5;
-    QSpacerItem *horizontalSpacer_6;
-    QPushButton *recv_btn;
-    QSpacerItem *horizontalSpacer_5;
-    QPushButton *send_btn;
-    QSpacerItem *horizontalSpacer_7;
+    QStackedWidget *stackedWidget;
+    ChatPage *chat_page;
+    QWidget *firend_apply_page;
 
     void setupUi(QDialog *ChatDialog)
     {
         if (ChatDialog->objectName().isEmpty())
             ChatDialog->setObjectName("ChatDialog");
-        ChatDialog->resize(424, 433);
+        ChatDialog->resize(778, 624);
         horizontalLayout = new QHBoxLayout(ChatDialog);
         horizontalLayout->setSpacing(0);
         horizontalLayout->setObjectName("horizontalLayout");
@@ -93,7 +74,7 @@ public:
         verticalLayout_2 = new QVBoxLayout(side_bar);
         verticalLayout_2->setSpacing(7);
         verticalLayout_2->setObjectName("verticalLayout_2");
-        verticalLayout_2->setContentsMargins(10, 30, 0, 0);
+        verticalLayout_2->setContentsMargins(15, 30, 0, 0);
         widget = new QWidget(side_bar);
         widget->setObjectName("widget");
         verticalLayout_3 = new QVBoxLayout(widget);
@@ -107,17 +88,19 @@ public:
 
         verticalLayout_3->addWidget(side_head_lab);
 
-        side_chat_lab = new QLabel(widget);
+        side_chat_lab = new ClickedLabel(widget);
         side_chat_lab->setObjectName("side_chat_lab");
-        side_chat_lab->setMinimumSize(QSize(30, 30));
-        side_chat_lab->setMaximumSize(QSize(30, 30));
+        side_chat_lab->setMinimumSize(QSize(25, 25));
+        side_chat_lab->setMaximumSize(QSize(25, 25));
+        side_chat_lab->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
         verticalLayout_3->addWidget(side_chat_lab);
 
-        side_contact_lab = new QLabel(widget);
+        side_contact_lab = new ClickedLabel(widget);
         side_contact_lab->setObjectName("side_contact_lab");
-        side_contact_lab->setMinimumSize(QSize(30, 30));
-        side_contact_lab->setMaximumSize(QSize(30, 30));
+        side_contact_lab->setMinimumSize(QSize(25, 25));
+        side_contact_lab->setMaximumSize(QSize(25, 25));
+        side_contact_lab->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
         verticalLayout_3->addWidget(side_contact_lab);
 
@@ -184,121 +167,22 @@ public:
 
         horizontalLayout->addWidget(chat_user_wid);
 
-        chat_data_wid = new QWidget(ChatDialog);
-        chat_data_wid->setObjectName("chat_data_wid");
-        verticalLayout_4 = new QVBoxLayout(chat_data_wid);
-        verticalLayout_4->setSpacing(0);
-        verticalLayout_4->setObjectName("verticalLayout_4");
-        verticalLayout_4->setContentsMargins(0, 0, 0, 0);
-        title_wid = new QWidget(chat_data_wid);
-        title_wid->setObjectName("title_wid");
-        title_wid->setMinimumSize(QSize(0, 60));
-        title_wid->setMaximumSize(QSize(16777215, 60));
-        horizontalLayout_3 = new QHBoxLayout(title_wid);
-        horizontalLayout_3->setObjectName("horizontalLayout_3");
-        widget_2 = new QWidget(title_wid);
-        widget_2->setObjectName("widget_2");
-        verticalLayout_5 = new QVBoxLayout(widget_2);
-        verticalLayout_5->setObjectName("verticalLayout_5");
-        title_lab = new QLabel(widget_2);
-        title_lab->setObjectName("title_lab");
+        stackedWidget = new QStackedWidget(ChatDialog);
+        stackedWidget->setObjectName("stackedWidget");
+        chat_page = new ChatPage();
+        chat_page->setObjectName("chat_page");
+        stackedWidget->addWidget(chat_page);
+        firend_apply_page = new QWidget();
+        firend_apply_page->setObjectName("firend_apply_page");
+        stackedWidget->addWidget(firend_apply_page);
 
-        verticalLayout_5->addWidget(title_lab);
-
-
-        horizontalLayout_3->addWidget(widget_2);
-
-
-        verticalLayout_4->addWidget(title_wid);
-
-        chat_data_list = new QWidget(chat_data_wid);
-        chat_data_list->setObjectName("chat_data_list");
-
-        verticalLayout_4->addWidget(chat_data_list);
-
-        tool_wid = new QWidget(chat_data_wid);
-        tool_wid->setObjectName("tool_wid");
-        tool_wid->setMinimumSize(QSize(0, 60));
-        tool_wid->setMaximumSize(QSize(16777215, 60));
-        horizontalLayout_4 = new QHBoxLayout(tool_wid);
-        horizontalLayout_4->setSpacing(7);
-        horizontalLayout_4->setObjectName("horizontalLayout_4");
-        horizontalLayout_4->setContentsMargins(2, 2, 2, 2);
-        horizontalSpacer_2 = new QSpacerItem(5, 20, QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Minimum);
-
-        horizontalLayout_4->addItem(horizontalSpacer_2);
-
-        emoj_lab = new QLabel(tool_wid);
-        emoj_lab->setObjectName("emoj_lab");
-        emoj_lab->setMinimumSize(QSize(25, 25));
-        emoj_lab->setMaximumSize(QSize(25, 25));
-
-        horizontalLayout_4->addWidget(emoj_lab);
-
-        horizontalSpacer_3 = new QSpacerItem(5, 20, QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Minimum);
-
-        horizontalLayout_4->addItem(horizontalSpacer_3);
-
-        file_lab = new QLabel(tool_wid);
-        file_lab->setObjectName("file_lab");
-        file_lab->setMinimumSize(QSize(25, 25));
-        file_lab->setMaximumSize(QSize(25, 25));
-
-        horizontalLayout_4->addWidget(file_lab);
-
-        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
-
-        horizontalLayout_4->addItem(horizontalSpacer_4);
-
-
-        verticalLayout_4->addWidget(tool_wid);
-
-        chatEdit = new QTextEdit(chat_data_wid);
-        chatEdit->setObjectName("chatEdit");
-        chatEdit->setMaximumSize(QSize(16777215, 150));
-
-        verticalLayout_4->addWidget(chatEdit);
-
-        send_wid = new QWidget(chat_data_wid);
-        send_wid->setObjectName("send_wid");
-        send_wid->setMinimumSize(QSize(0, 60));
-        send_wid->setMaximumSize(QSize(16777215, 60));
-        horizontalLayout_5 = new QHBoxLayout(send_wid);
-        horizontalLayout_5->setObjectName("horizontalLayout_5");
-        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
-
-        horizontalLayout_5->addItem(horizontalSpacer_6);
-
-        recv_btn = new QPushButton(send_wid);
-        recv_btn->setObjectName("recv_btn");
-        recv_btn->setMinimumSize(QSize(100, 30));
-        recv_btn->setMaximumSize(QSize(100, 30));
-
-        horizontalLayout_5->addWidget(recv_btn);
-
-        horizontalSpacer_5 = new QSpacerItem(10, 20, QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Minimum);
-
-        horizontalLayout_5->addItem(horizontalSpacer_5);
-
-        send_btn = new QPushButton(send_wid);
-        send_btn->setObjectName("send_btn");
-        send_btn->setMinimumSize(QSize(100, 30));
-        send_btn->setMaximumSize(QSize(100, 30));
-
-        horizontalLayout_5->addWidget(send_btn);
-
-        horizontalSpacer_7 = new QSpacerItem(10, 20, QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Minimum);
-
-        horizontalLayout_5->addItem(horizontalSpacer_7);
-
-
-        verticalLayout_4->addWidget(send_wid);
-
-
-        horizontalLayout->addWidget(chat_data_wid);
+        horizontalLayout->addWidget(stackedWidget);
 
 
         retranslateUi(ChatDialog);
+
+        stackedWidget->setCurrentIndex(0);
+
 
         QMetaObject::connectSlotsByName(ChatDialog);
     } // setupUi
@@ -310,11 +194,6 @@ public:
         side_chat_lab->setText(QString());
         side_contact_lab->setText(QString());
         add_btn->setText(QString());
-        title_lab->setText(QCoreApplication::translate("ChatDialog", "\350\260\267\351\233\250", nullptr));
-        emoj_lab->setText(QString());
-        file_lab->setText(QString());
-        recv_btn->setText(QCoreApplication::translate("ChatDialog", "\346\216\245\346\224\266", nullptr));
-        send_btn->setText(QCoreApplication::translate("ChatDialog", "\345\217\221\351\200\201", nullptr));
     } // retranslateUi
 
 };

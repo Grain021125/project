@@ -16,15 +16,6 @@
 }
 
 /* ========== Global ========== */
-* {
-    outline: 0;
-}
-QWidget {
-    background: #f5f7fb;
-    color: #323232;
-    font-family: "Microsoft YaHei", "Noto Sans CJK SC", "Segoe UI", "Arial";
-    font-size: 13px;
-}
 
 #side_bar{
     background: #f7f9fc;
@@ -57,6 +48,13 @@ QWidget {
     background: rgba(18,183,245,0.12);
 }
 
+#chat_data_wid #title_lab{
+    font-family: "Microsoft YaHei";
+    color:#323232;
+    font-size: 18px;
+    font-weight: normal;
+}
+
 #chat_data_list {
     background: #fcfcff;
 }
@@ -73,8 +71,7 @@ QWidget {
 #tool_wid {
     background: #f7f9fc;
     color: #323232;
-    border: 1px solid #e6eaf0;
-    border-radius: 6px;
+    border-bottom: 1px solid #e6eaf0;
     padding: 6px 8px;
 }
 
@@ -85,9 +82,9 @@ QWidget {
 
 #chatEdit {
     background: #f7f9fc;
-    border: 1px solid #e6eaf0;
-    border-radius: 10px;
-    padding: 6px 8px;
+    color: #323232;
+    font-family: "Microsoft YaHei", "Noto Sans CJK SC", "Segoe UI", "Arial";
+    border: none;
     selection-background-color: rgba(18,183,245,0.20);
 }
 
@@ -111,7 +108,6 @@ QWidget {
 
 #send_wid{
     background: #f7f9fc;
-    border: none; /* 隐藏边框 */
 }
 
 
@@ -120,11 +116,11 @@ QWidget {
 #search_wid {
     background: #f7f9fc;
     border: 1px solid #e6eaf0;
-    border-radius: 8px;
     padding: 6px 10px;
 }
 #search_edit {
     border: 2px solid #f1f1f1;
+    color: #323232;
 }
 
 #add_btn[state='normal'] {
@@ -143,14 +139,117 @@ QWidget {
     border-image: url(:/res/smile.png);
 }
 
+#emoj_lab:hover{
+    border-image: url(:/res/smile_hover.png);
+}
+
+#emoj_lab[state='press']{
+    border-image: url(:/res/smile_press.png);
+}
+
 #file_lab{
     border-image: url(:/res/filedir.png);
 }
 
-#side_chat_lab {
+#file_lab:hover{
+    border-image: url(:/res/filedir_hover.png);
+}
+
+#file_lab[state='press']{
+    border-image: url(:/res/filedir_press.png);
+}
+
+#side_chat_lab[state='normal']{ 
     border-image: url(:/res/chat_icon.png);
+}
+#side_chat_lab[state='hover']{ 
+    border-image: url(:/res/chat_icon_hover.png);
+}
+#side_chat_lab[state='press']{
+    border-image: url(:/res/chat_icon_press.png);
+}
+#side_chat_lab[state='select'] {
+    border-image: url(:/res/chat_icon_press.png);
+}
+#side_chat_lab[state='select_hover'] {
+    border-image: url(:/res/chat_icon_press.png);
+}
+#side_chat_lab[state='select_press'] {
+    border-image: url(:/res/chat_icon_press.png);
 }
 
 #side_contact_lab{
     border-image: url(:/res/contact_list.png);
+}
+#side_contact_lab:hover{
+    border-image: url(:/res/contact_list_hover.png);
+}
+#side_contact_lab[state='press']{
+    border-image: url(:/res/contact_list_press.png);
+}
+#side_contact_lab[state='select'] {
+    border-image: url(:/res/contact_list_press.png);
+}
+#side_contact_lab[state='select_hover'] {
+    border-image: url(:/res/contact_list_press.png);
+}
+#side_contact_lab[state='select_press'] {
+    border-image: url(:/res/contact_list_press.png);
+}
+
+#chat_user_list {
+    background-color: rgb(247,247,248);
+    border: none;
+}
+
+#chat_user_list::item:selected {
+    background-color: #d3d7d4;
+    border: none;
+    outline: none;
+}
+
+#chat_user_list::item:hover {
+    background-color: rgb(206,207,208);
+    border: none;
+    outline: none;
+}
+
+#chat_user_list::focus {
+    border: none;
+    outline: none;
+}
+
+#user_chat_lab{
+    color:rgb(153,153,153);
+    font-size: 12px;
+    font-family: "Microsoft YaHei", "Noto Sans CJK SC", "Segoe UI", "Arial";
+}
+#user_name_lab{
+    color:rgb(0,0,0);
+    font-size: 14px;
+    font-weight: normal;
+    font-family: "Microsoft YaHei", "Noto Sans CJK SC", "Segoe UI", "Arial";
+}
+#time_wid #time_lab{
+   color:rgb(140,140,140);
+   font-size: 12px;
+   font-family: "Microsoft YaHei", "Noto Sans CJK SC", "Segoe UI", "Arial";
+}
+QScrollBar:vertical {
+    background: transparent; /* 将轨道背景设置为透明 */
+    width: 8px; /* 滚动条宽度，根据需要调整 */
+    margin: 0px; /* 移除滚动条与滑块之间的间距 */
+}
+QScrollBar::handle:vertical {
+    background: rgb(173,170,169); /* 滑块颜色 */
+    min-height: 2px; /* 滑块最小高度，根据需要调整 */
+    border-radius: 4px; /* 滑块边缘圆角，调整以形成椭圆形状 */
+}
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0px; /* 移除上下按钮 */
+    border: none; /* 移除边框 */
+    background: transparent; /* 背景透明 */
+}
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none; /* 页面滚动部分背景透明 */
 }

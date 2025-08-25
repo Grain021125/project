@@ -14,13 +14,15 @@ UI_DIR= ./UI
 
 SOURCES += \
     chatdialog.cpp \
+    chatpage.cpp \
     chatuserlist.cpp \
     chatuserwid.cpp \
-    clickablelabel.cpp \
     clickedbtn.cpp \
+    clickedlabel.cpp \
     customizeedit.cpp \
     global.cpp \
     httpmgr.cpp \
+    listitembase.cpp \
     logindialog.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -31,13 +33,15 @@ SOURCES += \
 
 HEADERS += \
     chatdialog.h \
+    chatpage.h \
     chatuserlist.h \
     chatuserwid.h \
-    clickablelabel.h \
     clickedbtn.h \
+    clickedlabel.h \
     customizeedit.h \
     global.h \
     httpmgr.h \
+    listitembase.h \
     logindialog.h \
     mainwindow.h \
     registerdialog.h \
@@ -48,6 +52,7 @@ HEADERS += \
 
 FORMS += \
     chatdialog.ui \
+    chatpage.ui \
     chatuserwid.ui \
     mainwindow.ui \
     logindialog.ui \

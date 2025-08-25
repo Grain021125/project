@@ -1,6 +1,6 @@
 #include "logindialog.h"
 #include "ui_logindialog.h"
-#include "clickablelabel.h"
+#include "clickedlabel.h"
 #include "httpmgr.h"
 #include "tcpmgr.h"
 #include <QString>
@@ -17,7 +17,7 @@ LoginDialog::LoginDialog(QWidget *parent)
     ui->pass_edit->setEchoMode(QLineEdit::Password);
 
     ui->forget_label->setCursor(Qt::PointingHandCursor);
-    connect(ui->forget_label, &ClickableLabel::clicked, this, &LoginDialog::slot_forget_pwd);
+    connect(ui->forget_label, &ClickedLabel::clicked, this, &LoginDialog::slot_forget_pwd);
 
     connect(HttpMgr::GetInstance().get(), &HttpMgr::sig_login_mod_finish, this, &LoginDialog::slot_login_mod_finish);
 
