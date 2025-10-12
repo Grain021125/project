@@ -17,6 +17,9 @@ public:
 
 private:
     Ui::ChatPage *ui;
+
+private slots:
+    void on_send_btn_clicked();
 };
 
 #endif // CHATPAGE_H

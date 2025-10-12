@@ -7,6 +7,7 @@
 #include <functional>
 #include <QObject>
 #include <QByteArray>
+#include "userdata.h"
 
 class TcpMgr: public QObject, public Singleton<TcpMgr>
 {
@@ -34,6 +35,7 @@ signals:
     void sig_send_data(ReqId reqId, QString data);
     void sig_switch_chatdialg();
     void sig_login_faild(int);
+    void sig_user_search(std::shared_ptr<SearchInfo>);
 };
 
 #endif // TCPMGR_H

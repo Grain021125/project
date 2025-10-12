@@ -20,10 +20,11 @@
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 #include <clickedbtn.h>
+#include <statewidget.h>
 #include "chatpage.h"
 #include "chatuserlist.h"
-#include "clickedlabel.h"
 #include "customizeedit.h"
+#include "searchlist.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -36,8 +37,8 @@ public:
     QWidget *widget;
     QVBoxLayout *verticalLayout_3;
     QLabel *side_head_lab;
-    ClickedLabel *side_chat_lab;
-    ClickedLabel *side_contact_lab;
+    StateWidget *side_chat_lab;
+    StateWidget *side_contact_lab;
     QSpacerItem *verticalSpacer;
     QWidget *chat_user_wid;
     QVBoxLayout *verticalLayout;
@@ -47,7 +48,7 @@ public:
     QSpacerItem *horizontalSpacer;
     ClickedBtn *add_btn;
     ChatUserList *chat_user_list;
-    QListWidget *search_list;
+    SearchList *search_list;
     QListWidget *con_user_list;
     QStackedWidget *stackedWidget;
     ChatPage *chat_page;
@@ -88,19 +89,17 @@ public:
 
         verticalLayout_3->addWidget(side_head_lab);
 
-        side_chat_lab = new ClickedLabel(widget);
+        side_chat_lab = new StateWidget(widget);
         side_chat_lab->setObjectName("side_chat_lab");
-        side_chat_lab->setMinimumSize(QSize(25, 25));
-        side_chat_lab->setMaximumSize(QSize(25, 25));
-        side_chat_lab->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        side_chat_lab->setMinimumSize(QSize(30, 30));
+        side_chat_lab->setMaximumSize(QSize(30, 30));
 
         verticalLayout_3->addWidget(side_chat_lab);
 
-        side_contact_lab = new ClickedLabel(widget);
+        side_contact_lab = new StateWidget(widget);
         side_contact_lab->setObjectName("side_contact_lab");
-        side_contact_lab->setMinimumSize(QSize(25, 25));
-        side_contact_lab->setMaximumSize(QSize(25, 25));
-        side_contact_lab->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        side_contact_lab->setMinimumSize(QSize(30, 30));
+        side_contact_lab->setMaximumSize(QSize(30, 30));
 
         verticalLayout_3->addWidget(side_contact_lab);
 
@@ -154,7 +153,7 @@ public:
 
         verticalLayout->addWidget(chat_user_list);
 
-        search_list = new QListWidget(chat_user_wid);
+        search_list = new SearchList(chat_user_wid);
         search_list->setObjectName("search_list");
 
         verticalLayout->addWidget(search_list);
@@ -190,9 +189,7 @@ public:
     void retranslateUi(QDialog *ChatDialog)
     {
         ChatDialog->setWindowTitle(QCoreApplication::translate("ChatDialog", "Dialog", nullptr));
-        side_head_lab->setText(QCoreApplication::translate("ChatDialog", "[\345\244\264\345\203\217]", nullptr));
-        side_chat_lab->setText(QString());
-        side_contact_lab->setText(QString());
+        side_head_lab->setText(QString());
         add_btn->setText(QString());
     } // retranslateUi
 

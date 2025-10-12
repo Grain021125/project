@@ -24,7 +24,8 @@ enum ReqId{
     ID_REG_USER = 1002, //注册用户
     ID_USER_LOGIN = 1003, //用户登录
     ID_CHAT_LOGIN = 1004, //登录聊天服务器
-    ID_CHAT_LOGIN_RSP = 1005 //登录聊天服务器回包
+    ID_CHAT_LOGIN_RSP = 1005, //登录聊天服务器回包
+    ID_SEARCH_USER_REQ = 1006 //查找用户回包
 };
 
 enum Modules{
@@ -62,8 +63,18 @@ enum ClickLbState{
     Selected = 1
 };
 
-
-
 extern QString gate_url_prefix;
+
+enum class ChatRole
+{
+    Self,
+    Other
+};
+
+struct MsgInfo{
+    QString msgFlag;//"text,image,file"
+    QString content;//表示文件和图像的url,文本信息
+    QPixmap pixmap;//文件和图片的缩略图
+};
 
 #endif // GLOBAL_H

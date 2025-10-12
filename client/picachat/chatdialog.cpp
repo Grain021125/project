@@ -57,6 +57,65 @@ ChatDialog::ChatDialog(QWidget *parent)
         }
     });
     ui->search_edit->SetMaxLength(15);
+
+    QPixmap pixmap(":/res/head_1.jpg");
+    ui->side_head_lab->setPixmap(pixmap); // 将图片设置到QLabel上
+    QPixmap scaledPixmap = pixmap.scaled( ui->side_head_lab->size(), Qt::KeepAspectRatio); // 将图片缩放到label的大小
+    ui->side_head_lab->setPixmap(scaledPixmap); // 将缩放后的图片设置到QLabel上
+    ui->side_head_lab->setScaledContents(true); // 设置QLabel自动缩放图片内容以适应大小
+
+    ui->side_chat_lab->setProperty("state","normal");
+
+    ui->side_chat_lab->SetState("normal","hover","pressed","selected_normal","selected_hover","selected_pressed");
+
+    ui->side_contact_lab->SetState("normal","hover","pressed","selected_normal","selected_hover","selected_pressed");
+
+    AddlabGroup(ui->side_chat_lab);
+    AddlabGroup(ui->side_contact_lab);
+
+    connect(ui->side_chat_lab, &StateWidget::clicked, this, &ChatDialog::slot_side_chat);
+    connect(ui->side_contact_lab, &StateWidget::clicked, this, &ChatDialog::slot_side_contact);
+}
+
+void ChatDialog::slot_side_chat()
+{
+    qDebug()<< "receive side chat clicked";
+    ClearLabelState(ui->side_chat_lab);
+    ui->stackedWidget->setCurrentWidget(ui->chat_page);
+    _state = ChatUIMode::ChatMode;
+    ShowSearch(false);
+}
+
+
+void ChatDialog::slot_side_contact(){
+    qDebug()<< "receive side contact clicked";
+    ClearLabelState(ui->side_contact_lab);
+    //设置
+    // if(_last_widget == nullptr){
+    //     ui->stackedWidget->setCurrentWidget(ui->friend_apply_page);
+    //     _last_widget = ui->friend_apply_page;
+    // }else{
+    //     ui->stackedWidget->setCurrentWidget(_last_widget);
+    // }
+
+    _state = ChatUIMode::ContactMode;
+    ShowSearch(false);
+}
+
+void ChatDialog::ClearLabelState(StateWidget *lb)
+{
+    for(auto & ele: _lb_list){
+        if(ele == lb){
+            continue;
+        }
+
+        ele->ClearState();
+    }
+}
+
+void ChatDialog::AddlabGroup(StateWidget *lb)
+{
+    _lb_list.push_back(lb);
 }
 
 void ChatDialog::ShowSearch(bool bsearch)
@@ -96,6 +155,16 @@ void ChatDialog::addChatUserList()
         ui->chat_user_list->setItemWidget(item, chat_user_wid);
     }
 }
+
+void ChatDialog::slot_text_changed(const QString &str)
+{
+    //qDebug()<< "receive slot text changed str is " << str;
+    if (!str.isEmpty()) {
+        ShowSearch(true);
+    }
+}
+
+
 
 ChatDialog::~ChatDialog()
 {
