@@ -9,6 +9,7 @@ debug/chatview.o
 debug/clickedbtn.o
 debug/clickedlabel.o
 debug/customizeedit.o
+debug/findsuccessdialog.o
 debug/global.o
 debug/httpmgr.o
 debug/listitembase.o
@@ -37,6 +38,7 @@ debug/moc_chatview.o
 debug/moc_clickedbtn.o
 debug/moc_clickedlabel.o
 debug/moc_customizeedit.o
+debug/moc_findsuccessdialog.o
 debug/moc_httpmgr.o
 debug/moc_listitembase.o
 debug/moc_logindialog.o

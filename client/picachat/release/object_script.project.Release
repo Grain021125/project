@@ -9,6 +9,7 @@ release/chatview.o
 release/clickedbtn.o
 release/clickedlabel.o
 release/customizeedit.o
+release/findsuccessdialog.o
 release/global.o
 release/httpmgr.o
 release/listitembase.o
@@ -37,6 +38,7 @@ release/moc_chatview.o
 release/moc_clickedbtn.o
 release/moc_clickedlabel.o
 release/moc_customizeedit.o
+release/moc_findsuccessdialog.o
 release/moc_httpmgr.o
 release/moc_listitembase.o
 release/moc_logindialog.o

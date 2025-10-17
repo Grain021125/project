@@ -75,6 +75,12 @@ ChatDialog::ChatDialog(QWidget *parent)
 
     connect(ui->side_chat_lab, &StateWidget::clicked, this, &ChatDialog::slot_side_chat);
     connect(ui->side_contact_lab, &StateWidget::clicked, this, &ChatDialog::slot_side_contact);
+
+    // 链接搜索框输入变化
+    connect(ui->search_edit, &QLineEdit::textChanged, this, &ChatDialog::slot_text_changed);
+
+    ui->side_chat_lab->SetSelected(true);
+
 }
 
 void ChatDialog::slot_side_chat()

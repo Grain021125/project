@@ -7,17 +7,17 @@
     color: rgb(255, 255, 255);
 }
 
-#error_label[state='normal']{
+#error_label[state='normal'] {
     color: green;
 }
 
-#error_label[state='err']{
+#error_label[state='err'] {
     color: red;
 }
 
 /* ========== Global ========== */
 
-#side_bar{
+#side_bar {
     background: #f7f9fc;
     border-right: 1px solid #e6eaf0;
 }
@@ -27,30 +27,33 @@
     border: 1px solid #e6eaf0;
     border-radius: 8px;
     padding: 6px 10px;
-    selection-background-color: rgba(18,183,245,0.20);
+    selection-background-color: rgba(18, 183, 245, 0.20);
 }
 
 #chat_user_wid {
     background: transparent;
     border: none;
 }
-#chat_user_wid::item{
+
+#chat_user_wid::item {
     height: 56px;
     margin: 2px 6px;
     padding: 6px 10px;
     border-radius: 10px;
     color: #323232;
 }
+
 #chat_user_wid::item:hover {
-    background: rgba(18,183,245,0.08);
-}
-#chat_user_wid::item:selected {
-    background: rgba(18,183,245,0.12);
+    background: rgba(18, 183, 245, 0.08);
 }
 
-#chat_data_wid #title_lab{
+#chat_user_wid::item:selected {
+    background: rgba(18, 183, 245, 0.12);
+}
+
+#chat_data_wid #title_lab {
     font-family: "Microsoft YaHei";
-    color:#323232;
+    color: #323232;
     font-size: 18px;
     font-weight: normal;
 }
@@ -85,10 +88,11 @@
     color: #323232;
     font-family: "Microsoft YaHei", "Noto Sans CJK SC", "Segoe UI", "Arial";
     border: none;
-    selection-background-color: rgba(18,183,245,0.20);
+    selection-background-color: rgba(18, 183, 245, 0.20);
 }
 
-#send_btn, #recv_btn {
+#send_btn,
+#recv_btn {
     background: #12b7f5;
     color: #ffffff;
     border: none;
@@ -98,15 +102,18 @@
     font-weight: 600;
 }
 
-#send_btn:hover, #recv_btn:hover {
+#send_btn:hover,
+#recv_btn:hover {
     background: #0ea5e9;
 }
 
-#send_btn:pressed, #recv_btn:pressed {
-    background: #0c94d2;;
+#send_btn:pressed,
+#recv_btn:pressed {
+    background: #0c94d2;
+    ;
 }
 
-#send_wid{
+#send_wid {
     background: #f7f9fc;
 }
 
@@ -118,6 +125,7 @@
     border: 1px solid #e6eaf0;
     padding: 6px 10px;
 }
+
 #search_edit {
     border: 2px solid #f1f1f1;
     color: #323232;
@@ -135,70 +143,80 @@
     border-image: url();
 }
 
-#emoj_lab{
+#emoj_lab {
     border-image: url(:/res/smile.png);
 }
 
-#emoj_lab:hover{
+#emoj_lab:hover {
     border-image: url(:/res/smile_hover.png);
 }
 
-#emoj_lab[state='press']{
+#emoj_lab[state='press'] {
     border-image: url(:/res/smile_press.png);
 }
 
-#file_lab{
+#file_lab {
     border-image: url(:/res/filedir.png);
 }
 
-#file_lab:hover{
+#file_lab:hover {
     border-image: url(:/res/filedir_hover.png);
 }
 
-#file_lab[state='press']{
+#file_lab[state='press'] {
     border-image: url(:/res/filedir_press.png);
 }
 
-#side_chat_lab[state='normal']{ 
+#side_chat_lab[state='normal'] {
     border-image: url(:/res/chat_icon.png);
 }
-#side_chat_lab[state='hover']{ 
+
+#side_chat_lab[state='hover'] {
     border-image: url(:/res/chat_icon_hover.png);
 }
-#side_chat_lab[state='press']{
+
+#side_chat_lab[state='press'] {
     border-image: url(:/res/chat_icon_press.png);
 }
+
 #side_chat_lab[state='select'] {
     border-image: url(:/res/chat_icon_press.png);
 }
+
 #side_chat_lab[state='select_hover'] {
     border-image: url(:/res/chat_icon_press.png);
 }
+
 #side_chat_lab[state='select_press'] {
     border-image: url(:/res/chat_icon_press.png);
 }
 
-#side_contact_lab{
+#side_contact_lab {
     border-image: url(:/res/contact_list.png);
 }
-#side_contact_lab:hover{
+
+#side_contact_lab:hover {
     border-image: url(:/res/contact_list_hover.png);
 }
-#side_contact_lab[state='press']{
+
+#side_contact_lab[state='press'] {
     border-image: url(:/res/contact_list_press.png);
 }
+
 #side_contact_lab[state='select'] {
     border-image: url(:/res/contact_list_press.png);
 }
+
 #side_contact_lab[state='select_hover'] {
     border-image: url(:/res/contact_list_press.png);
 }
+
 #side_contact_lab[state='select_press'] {
     border-image: url(:/res/contact_list_press.png);
 }
 
 #chat_user_list {
-    background-color: rgb(247,247,248);
+    background-color: rgb(247, 247, 248);
     border: none;
 }
 
@@ -209,7 +227,7 @@
 }
 
 #chat_user_list::item:hover {
-    background-color: rgb(206,207,208);
+    background-color: rgb(206, 207, 208);
     border: none;
     outline: none;
 }
@@ -219,104 +237,122 @@
     outline: none;
 }
 
-#user_chat_lab{
-    color:rgb(153,153,153);
+#user_chat_lab {
+    color: rgb(153, 153, 153);
     font-size: 12px;
     font-family: "Microsoft YaHei", "Noto Sans CJK SC", "Segoe UI", "Arial";
 }
-#user_name_lab{
-    color:rgb(0,0,0);
+
+#user_name_lab {
+    color: rgb(0, 0, 0);
     font-size: 14px;
     font-weight: normal;
     font-family: "Microsoft YaHei", "Noto Sans CJK SC", "Segoe UI", "Arial";
 }
-#time_wid #time_lab{
-   color:rgb(140,140,140);
-   font-size: 12px;
-   font-family: "Microsoft YaHei", "Noto Sans CJK SC", "Segoe UI", "Arial";
+
+#time_wid #time_lab {
+    color: rgb(140, 140, 140);
+    font-size: 12px;
+    font-family: "Microsoft YaHei", "Noto Sans CJK SC", "Segoe UI", "Arial";
 }
+
 QScrollBar:vertical {
-    background: transparent; /* 将轨道背景设置为透明 */
-    width: 8px; /* 滚动条宽度，根据需要调整 */
-    margin: 0px; /* 移除滚动条与滑块之间的间距 */
+    background: transparent;
+    /* 将轨道背景设置为透明 */
+    width: 8px;
+    /* 滚动条宽度，根据需要调整 */
+    margin: 0px;
+    /* 移除滚动条与滑块之间的间距 */
 }
+
 QScrollBar::handle:vertical {
-    background: rgb(173,170,169); /* 滑块颜色 */
-    min-height: 2px; /* 滑块最小高度，根据需要调整 */
-    border-radius: 4px; /* 滑块边缘圆角，调整以形成椭圆形状 */
-}
-QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
-    height: 0px; /* 移除上下按钮 */
-    border: none; /* 移除边框 */
-    background: transparent; /* 背景透明 */
-}
-QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
-    background: none; /* 页面滚动部分背景透明 */
+    background: rgb(173, 170, 169);
+    /* 滑块颜色 */
+    min-height: 2px;
+    /* 滑块最小高度，根据需要调整 */
+    border-radius: 4px;
+    /* 滑块边缘圆角，调整以形成椭圆形状 */
 }
 
-#chat_data_list{
-    background:  rgb(247,247,248);
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+    /* 移除上下按钮 */
+    border: none;
+    /* 移除边框 */
+    background: transparent;
+    /* 背景透明 */
 }
 
-#chat_bg{
-    background:  rgb(247,247,248);
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: none;
+    /* 页面滚动部分背景透明 */
 }
 
-#chat_area{
+#chat_data_list {
+    background: rgb(247, 247, 248);
+}
+
+#chat_bg {
+    background: rgb(247, 247, 248);
+}
+
+#chat_area {
     border: none;
 }
 
 #chat_user_name {
-    color:rgb(153,153,153);
+    color: rgb(153, 153, 153);
     font-size: 14px;
     font-family: "Microsoft YaHei";
 }
 
-#side_chat_lab[state='normal']{
+#side_chat_lab[state='normal'] {
     border-image: url(:/res/chat_icon.png);
 }
 
-#side_chat_lab[state='hover']{
+#side_chat_lab[state='hover'] {
     border-image: url(:/res/chat_icon_hover.png);
 }
 
-#side_chat_lab[state='pressed']{
+#side_chat_lab[state='pressed'] {
     border-image: url(:/res/chat_icon_press.png);
 }
 
-#side_chat_lab[state='selected_normal']{
+#side_chat_lab[state='selected_normal'] {
     border-image: url(:/res/chat_icon_press.png);
 }
 
-#side_chat_lab[state='selected_hover']{
+#side_chat_lab[state='selected_hover'] {
     border-image: url(:/res/chat_icon_press.png);
 }
 
-#side_chat_lab[state='selected_pressed']{
+#side_chat_lab[state='selected_pressed'] {
     border-image: url(:/res/chat_icon_press.png);
 }
 
-#side_contact_lab[state='normal']{
+#side_contact_lab[state='normal'] {
     border-image: url(:/res/contact_list.png);
 }
 
-#side_contact_lab[state='hover']{
+#side_contact_lab[state='hover'] {
     border-image: url(:/res/contact_list_hover.png);
 }
 
-#side_contact_lab[state='pressed']{
+#side_contact_lab[state='pressed'] {
     border-image: url(:/res/contact_list_press.png);
 }
 
-#side_contact_lab[state='selected_normal']{
+#side_contact_lab[state='selected_normal'] {
     border-image: url(:/res/contact_list_press.png);
 }
 
-#side_contact_lab[state='selected_hover']{
+#side_contact_lab[state='selected_hover'] {
     border-image: url(:/res/contact_list_press.png);
 }
 
-#side_contact_lab[state='selected_pressed']{
+#side_contact_lab[state='selected_pressed'] {
     border-image: url(:/res/contact_list_press.png);
 }
 
@@ -326,7 +362,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
 
 /* 搜索框列表*/
 #search_list {
-    background-color: rgb(247,247,248);
+    background-color: rgb(247, 247, 248);
     border: none;
 }
 
@@ -337,7 +373,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
 }
 
 #search_list::item:hover {
-    background-color: rgb(206,207,208);
+    background-color: rgb(206, 207, 208);
     border: none;
     outline: none;
 }
@@ -356,13 +392,47 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
     border-image: url(:/res/addtip.png);
 }
 
-#right_tip{
- border-image: url(:/res/right_tip.png);
+#right_tip {
+    border-image: url(:/res/right_tip.png);
 }
 
-#message_tip{
+#message_tip {
     color: #323232;
-  text-align: center;
-  font-family: "Microsoft YaHei";
-  font-size: 12pt;
+    text-align: center;
+    font-family: "Microsoft YaHei";
+    font-size: 12pt;
+}
+
+#FindSuccessDialog{
+   background-color: #ffffff;
+}
+
+#name_lab{
+    color: #323232;
+    font-size: 14px;
+    font-family: "Microsoft YaHei";
+}
+
+#add_friend_button[state='normal']{
+    background: #12b7f5;
+    color: #ffffff;
+    font-size: 14px; /* 设置字体大小 */
+    font-family: "Microsoft YaHei"; /* 设置字体 */
+    border-radius: 20px; /* 设置圆角 */
+}
+
+#add_friend_button[state='hover']{
+    background: #0ea5e9;
+    color: #ffffff;
+    font-size: 14px; /* 设置字体大小 */
+    font-family: "Microsoft YaHei"; /* 设置字体 */
+    border-radius: 20px; /* 设置圆角 */
+}
+
+#add_friend_button[state='press']{
+   background: #0c94d2;
+   color: #ffffff;
+   font-size: 14px; /* 设置字体大小 */
+   font-family: "Microsoft YaHei"; /* 设置字体 */
+   border-radius: 20px; /* 设置圆角 */
 }
