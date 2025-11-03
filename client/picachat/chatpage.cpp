@@ -20,7 +20,7 @@ ChatPage::~ChatPage()
     delete ui;
 }
 
-void ChatPage::on_send_btn_clicked()
+void ChatPage::on_send_button_clicked()
 {
     auto pTextEdit = ui->chatEdit;
     ChatRole role = ChatRole::Self;

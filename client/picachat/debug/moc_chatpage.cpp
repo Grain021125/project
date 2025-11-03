@@ -39,12 +39,12 @@ template <> constexpr inline auto ChatPage::qt_create_metaobjectdata<qt_meta_tag
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
         "ChatPage",
-        "on_send_btn_clicked",
+        "on_send_button_clicked",
         ""
     };
 
     QtMocHelpers::UintData qt_methods {
-        // Slot 'on_send_btn_clicked'
+        // Slot 'on_send_button_clicked'
         QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
@@ -69,7 +69,7 @@ void ChatPage::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
     auto *_t = static_cast<ChatPage *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->on_send_btn_clicked(); break;
+        case 0: _t->on_send_button_clicked(); break;
         default: ;
         }
     }

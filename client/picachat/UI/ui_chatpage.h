@@ -17,8 +17,8 @@
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
+#include <clickedlabel.h>
 #include "chatview.h"
-#include "clickedlabel.h"
 #include "messagetextedit.h"
 
 QT_BEGIN_NAMESPACE
@@ -46,9 +46,9 @@ public:
     QWidget *send_wid;
     QHBoxLayout *horizontalLayout_5;
     QSpacerItem *horizontalSpacer_6;
-    QPushButton *recv_btn;
+    QPushButton *recv_button;
     QSpacerItem *horizontalSpacer_5;
-    QPushButton *send_btn;
+    QPushButton *send_button;
     QSpacerItem *horizontalSpacer_7;
 
     void setupUi(QWidget *ChatPage)
@@ -154,23 +154,23 @@ public:
 
         horizontalLayout_5->addItem(horizontalSpacer_6);
 
-        recv_btn = new QPushButton(send_wid);
-        recv_btn->setObjectName("recv_btn");
-        recv_btn->setMinimumSize(QSize(100, 30));
-        recv_btn->setMaximumSize(QSize(100, 30));
+        recv_button = new QPushButton(send_wid);
+        recv_button->setObjectName("recv_button");
+        recv_button->setMinimumSize(QSize(100, 30));
+        recv_button->setMaximumSize(QSize(100, 30));
 
-        horizontalLayout_5->addWidget(recv_btn);
+        horizontalLayout_5->addWidget(recv_button);
 
         horizontalSpacer_5 = new QSpacerItem(10, 20, QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Minimum);
 
         horizontalLayout_5->addItem(horizontalSpacer_5);
 
-        send_btn = new QPushButton(send_wid);
-        send_btn->setObjectName("send_btn");
-        send_btn->setMinimumSize(QSize(100, 30));
-        send_btn->setMaximumSize(QSize(100, 30));
+        send_button = new QPushButton(send_wid);
+        send_button->setObjectName("send_button");
+        send_button->setMinimumSize(QSize(100, 30));
+        send_button->setMaximumSize(QSize(100, 30));
 
-        horizontalLayout_5->addWidget(send_btn);
+        horizontalLayout_5->addWidget(send_button);
 
         horizontalSpacer_7 = new QSpacerItem(10, 20, QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Minimum);
 
@@ -194,8 +194,8 @@ public:
         title_lab->setText(QCoreApplication::translate("ChatPage", "\350\260\267\351\233\250", nullptr));
         emoj_lab->setText(QString());
         file_lab->setText(QString());
-        recv_btn->setText(QCoreApplication::translate("ChatPage", "\346\216\245\346\224\266", nullptr));
-        send_btn->setText(QCoreApplication::translate("ChatPage", "\345\217\221\351\200\201", nullptr));
+        recv_button->setText(QCoreApplication::translate("ChatPage", "\346\216\245\346\224\266", nullptr));
+        send_button->setText(QCoreApplication::translate("ChatPage", "\345\217\221\351\200\201", nullptr));
     } // retranslateUi
 
 };

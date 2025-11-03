@@ -113,7 +113,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label">
+           <widget class="QLabel" name="message_lab">
             <property name="maximumSize">
              <size>
               <width>16777215</width>
@@ -142,7 +142,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_2">
+           <widget class="QLabel" name="back_lab">
             <property name="maximumSize">
              <size>
               <width>16777215</width>
@@ -171,7 +171,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_3">
+           <widget class="QLabel" name="label_lab">
             <property name="maximumSize">
              <size>
               <width>16777215</width>
@@ -232,7 +232,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="ClickedBtn" name="cancel_button">
+       <widget class="ClickedBtn" name="sure_button">
         <property name="minimumSize">
          <size>
           <width>100</width>
@@ -258,7 +258,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="ClickedBtn" name="pushButton_2">
+       <widget class="ClickedBtn" name="cancel_button">
         <property name="minimumSize">
          <size>
           <width>100</width>

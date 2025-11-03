@@ -3,29 +3,6 @@
 #include <QRandomGenerator>
 #include "chatuserwid.h"
 
-std::vector<QString>  strs ={"hello world !",
-                             "nice to meet u",
-                             "New year，new life",
-                             "You have to love yourself",
-                             "My love is written in the wind ever since the whole world is you"};
-std::vector<QString> heads = {
-    ":/res/head_1.jpg",
-    ":/res/head_2.jpg",
-    ":/res/head_3.jpg",
-    ":/res/head_4.jpg",
-    ":/res/head_5.jpg"
-};
-std::vector<QString> names = {
-    "llfc",
-    "zack",
-    "golang",
-    "cpp",
-    "java",
-    "nodejs",
-    "python",
-    "rust"
-};
-
 ChatDialog::ChatDialog(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::ChatDialog)
@@ -33,10 +10,12 @@ ChatDialog::ChatDialog(QWidget *parent)
     _state(ChatUIMode::ChatMode),_b_loading(false)
 {
     ui->setupUi(this);
-    ui->add_btn->SetState("normal", "hover", "press");
+    ui->add_button->SetState("normal", "hover", "press");
     ui->side_chat_lab->SetState();
     ui->side_contact_lab->SetState();
 
+    ui->stackedWidget->setCurrentWidget(ui->chat_page);
+    _state = ChatUIMode::ChatMode;
     ShowSearch(false);
 
     addChatUserList();
@@ -73,6 +52,19 @@ ChatDialog::ChatDialog(QWidget *parent)
     AddlabGroup(ui->side_chat_lab);
     AddlabGroup(ui->side_contact_lab);
 
+
+    //连接加载联系人的信号和槽函数
+    // connect(ui->con_user_list, &ContactUserList::sig_loading_contact_user,
+    //         this, &ChatDialog::slot_loading_contact_user);
+
+    //连接联系人页面点击好友申请条目的信号
+    connect(ui->con_user_list, &ContactUserList::sig_switch_apply_friend_page,
+            this,&ChatDialog::slot_switch_apply_friend_page);
+
+    //连接清除搜索框操作
+    connect(ui->friend_apply_page, &ApplyFriendPage::sig_show_search, this, &ChatDialog::slot_show_search);
+
+
     connect(ui->side_chat_lab, &StateWidget::clicked, this, &ChatDialog::slot_side_chat);
     connect(ui->side_contact_lab, &StateWidget::clicked, this, &ChatDialog::slot_side_contact);
 
@@ -96,13 +88,13 @@ void ChatDialog::slot_side_chat()
 void ChatDialog::slot_side_contact(){
     qDebug()<< "receive side contact clicked";
     ClearLabelState(ui->side_contact_lab);
-    //设置
-    // if(_last_widget == nullptr){
-    //     ui->stackedWidget->setCurrentWidget(ui->friend_apply_page);
-    //     _last_widget = ui->friend_apply_page;
-    // }else{
-    //     ui->stackedWidget->setCurrentWidget(_last_widget);
-    // }
+    // 设置
+    if(_last_widget == nullptr){
+        ui->stackedWidget->setCurrentWidget(ui->friend_apply_page);
+        _last_widget = ui->friend_apply_page;
+    }else{
+        ui->stackedWidget->setCurrentWidget(_last_widget);
+    }
 
     _state = ChatUIMode::ContactMode;
     ShowSearch(false);
@@ -170,7 +162,17 @@ void ChatDialog::slot_text_changed(const QString &str)
     }
 }
 
+void ChatDialog::slot_switch_apply_friend_page()
+{
+    qDebug()<<"receive switch apply friend page sig";
+    _last_widget = ui->friend_apply_page;
+    ui->stackedWidget->setCurrentWidget(ui->friend_apply_page);
+}
 
+void ChatDialog::slot_show_search(bool show)
+{
+    ShowSearch(show);
+}
 
 ChatDialog::~ChatDialog()
 {

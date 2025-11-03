@@ -14,16 +14,17 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QListWidget>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
-#include <clickedbtn.h>
+#include <applyfriendpage.h>
+#include <contactuserlist.h>
+#include <customizeedit.h>
 #include <statewidget.h>
 #include "chatpage.h"
 #include "chatuserlist.h"
-#include "customizeedit.h"
+#include "clickedbtn.h"
 #include "searchlist.h"
 
 QT_BEGIN_NAMESPACE
@@ -46,13 +47,13 @@ public:
     QHBoxLayout *horizontalLayout_2;
     CustomizeEdit *search_edit;
     QSpacerItem *horizontalSpacer;
-    ClickedBtn *add_btn;
+    ClickedBtn *add_button;
     ChatUserList *chat_user_list;
     SearchList *search_list;
-    QListWidget *con_user_list;
+    ContactUserList *con_user_list;
     QStackedWidget *stackedWidget;
     ChatPage *chat_page;
-    QWidget *firend_apply_page;
+    ApplyFriendPage *friend_apply_page;
 
     void setupUi(QDialog *ChatDialog)
     {
@@ -138,12 +139,12 @@ public:
 
         horizontalLayout_2->addItem(horizontalSpacer);
 
-        add_btn = new ClickedBtn(search_wid);
-        add_btn->setObjectName("add_btn");
-        add_btn->setMinimumSize(QSize(24, 24));
-        add_btn->setMaximumSize(QSize(24, 24));
+        add_button = new ClickedBtn(search_wid);
+        add_button->setObjectName("add_button");
+        add_button->setMinimumSize(QSize(24, 24));
+        add_button->setMaximumSize(QSize(24, 24));
 
-        horizontalLayout_2->addWidget(add_btn);
+        horizontalLayout_2->addWidget(add_button);
 
 
         verticalLayout->addWidget(search_wid);
@@ -158,7 +159,7 @@ public:
 
         verticalLayout->addWidget(search_list);
 
-        con_user_list = new QListWidget(chat_user_wid);
+        con_user_list = new ContactUserList(chat_user_wid);
         con_user_list->setObjectName("con_user_list");
 
         verticalLayout->addWidget(con_user_list);
@@ -171,9 +172,9 @@ public:
         chat_page = new ChatPage();
         chat_page->setObjectName("chat_page");
         stackedWidget->addWidget(chat_page);
-        firend_apply_page = new QWidget();
-        firend_apply_page->setObjectName("firend_apply_page");
-        stackedWidget->addWidget(firend_apply_page);
+        friend_apply_page = new ApplyFriendPage();
+        friend_apply_page->setObjectName("friend_apply_page");
+        stackedWidget->addWidget(friend_apply_page);
 
         horizontalLayout->addWidget(stackedWidget);
 
@@ -190,7 +191,7 @@ public:
     {
         ChatDialog->setWindowTitle(QCoreApplication::translate("ChatDialog", "Dialog", nullptr));
         side_head_lab->setText(QString());
-        add_btn->setText(QString());
+        add_button->setText(QString());
     } // retranslateUi
 
 };

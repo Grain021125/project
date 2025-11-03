@@ -25,7 +25,7 @@ void FriendLabel::SetText(QString text)
     ui->tip_lab->adjustSize();
 
     QFontMetrics fontMetrics(ui->tip_lab->font()); // 获取QLabel控件的字体信息
-    auto textWidth = fontMetrics.width(ui->tip_lab->text()); // 获取文本的宽度
+    auto textWidth = fontMetrics.horizontalAdvance(ui->tip_lab->text()); // 获取文本的宽度
     auto textHeight = fontMetrics.height(); // 获取文本的高度
 
     qDebug()<< " ui->tip_lab.width() is " << ui->tip_lab->width();

@@ -233,7 +233,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="ClickedBtn" name="add_btn">
+          <widget class="ClickedBtn" name="add_button">
            <property name="minimumSize">
             <size>
              <width>24</width>
@@ -261,7 +261,7 @@
        <widget class="SearchList" name="search_list"/>
       </item>
       <item>
-       <widget class="QListWidget" name="con_user_list"/>
+       <widget class="ContactUserList" name="con_user_list"/>
       </item>
      </layout>
     </widget>
@@ -272,7 +272,7 @@
       <number>0</number>
      </property>
      <widget class="ChatPage" name="chat_page"/>
-     <widget class="QWidget" name="firend_apply_page"/>
+     <widget class="ApplyFriendPage" name="friend_apply_page"/>
     </widget>
    </item>
   </layout>
@@ -281,12 +281,12 @@
   <customwidget>
    <class>ClickedBtn</class>
    <extends>QPushButton</extends>
-   <header location="global">clickedbtn.h</header>
+   <header>clickedbtn.h</header>
   </customwidget>
   <customwidget>
    <class>CustomizeEdit</class>
    <extends>QLineEdit</extends>
-   <header>customizeedit.h</header>
+   <header location="global">customizeedit.h</header>
   </customwidget>
   <customwidget>
    <class>ChatUserList</class>
@@ -309,6 +309,17 @@
    <class>SearchList</class>
    <extends>QListWidget</extends>
    <header>searchlist.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ContactUserList</class>
+   <extends>QListWidget</extends>
+   <header location="global">contactuserlist.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ApplyFriendPage</class>
+   <extends>QWidget</extends>
+   <header location="global">applyfriendpage.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

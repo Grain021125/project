@@ -45,7 +45,10 @@ template <> constexpr inline auto ChatDialog::qt_create_metaobjectdata<qt_meta_t
         "",
         "slot_side_contact",
         "slot_text_changed",
-        "str"
+        "str",
+        "slot_switch_apply_friend_page",
+        "slot_show_search",
+        "show"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -56,6 +59,12 @@ template <> constexpr inline auto ChatDialog::qt_create_metaobjectdata<qt_meta_t
         // Slot 'slot_text_changed'
         QtMocHelpers::SlotData<void(const QString &)>(4, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::QString, 5 },
+        }}),
+        // Slot 'slot_switch_apply_friend_page'
+        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'slot_show_search'
+        QtMocHelpers::SlotData<void(bool)>(7, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Bool, 8 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
@@ -83,6 +92,8 @@ void ChatDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 0: _t->slot_side_chat(); break;
         case 1: _t->slot_side_contact(); break;
         case 2: _t->slot_text_changed((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 3: _t->slot_switch_apply_friend_page(); break;
+        case 4: _t->slot_show_search((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
         default: ;
         }
     }
@@ -107,14 +118,14 @@ int ChatDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 5;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 5)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 3;
+        _id -= 5;
     }
     return _id;
 }

@@ -1,4 +1,8 @@
 release/adduseritem.o
+release/apllyfriend.o
+release/applyfrienditem.o
+release/applyfriendlist.o
+release/applyfriendpage.o
 release/bubbleframe.o
 release/chatdialog.o
 release/chatitembase.o
@@ -8,9 +12,13 @@ release/chatuserwid.o
 release/chatview.o
 release/clickedbtn.o
 release/clickedlabel.o
+release/contactuserlist.o
+release/conuseritem.o
 release/customizeedit.o
 release/findsuccessdialog.o
+release/friendlabel.o
 release/global.o
+release/grouptipitem.o
 release/httpmgr.o
 release/listitembase.o
 release/logindialog.o
@@ -28,6 +36,10 @@ release/userdata.o
 release/usermgr.o
 release/qrc_rc.o
 release/moc_adduseritem.o
+release/moc_apllyfriend.o
+release/moc_applyfrienditem.o
+release/moc_applyfriendlist.o
+release/moc_applyfriendpage.o
 release/moc_bubbleframe.o
 release/moc_chatdialog.o
 release/moc_chatitembase.o
@@ -37,8 +49,12 @@ release/moc_chatuserwid.o
 release/moc_chatview.o
 release/moc_clickedbtn.o
 release/moc_clickedlabel.o
+release/moc_contactuserlist.o
+release/moc_conuseritem.o
 release/moc_customizeedit.o
 release/moc_findsuccessdialog.o
+release/moc_friendlabel.o
+release/moc_grouptipitem.o
 release/moc_httpmgr.o
 release/moc_listitembase.o
 release/moc_logindialog.o

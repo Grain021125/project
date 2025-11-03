@@ -15,6 +15,9 @@ UI_DIR= ./UI
 SOURCES += \
     adduseritem.cpp \
     apllyfriend.cpp \
+    applyfrienditem.cpp \
+    applyfriendlist.cpp \
+    applyfriendpage.cpp \
     bubbleframe.cpp \
     chatdialog.cpp \
     chatitembase.cpp \
@@ -24,10 +27,13 @@ SOURCES += \
     chatview.cpp \
     clickedbtn.cpp \
     clickedlabel.cpp \
+    contactuserlist.cpp \
+    conuseritem.cpp \
     customizeedit.cpp \
     findsuccessdialog.cpp \
     friendlabel.cpp \
     global.cpp \
+    grouptipitem.cpp \
     httpmgr.cpp \
     listitembase.cpp \
     logindialog.cpp \
@@ -47,6 +53,9 @@ SOURCES += \
 HEADERS += \
     adduseritem.h \
     apllyfriend.h \
+    applyfrienditem.h \
+    applyfriendlist.h \
+    applyfriendpage.h \
     bubbleframe.h \
     chatdialog.h \
     chatitembase.h \
@@ -56,10 +65,13 @@ HEADERS += \
     chatview.h \
     clickedbtn.h \
     clickedlabel.h \
+    contactuserlist.h \
+    conuseritem.h \
     customizeedit.h \
     findsuccessdialog.h \
     friendlabel.h \
     global.h \
+    grouptipitem.h \
     httpmgr.h \
     listitembase.h \
     logindialog.h \
@@ -79,11 +91,15 @@ HEADERS += \
 FORMS += \
     adduseritem.ui \
     apllyfriend.ui \
+    applyfrienditem.ui \
+    applyfriendpage.ui \
     chatdialog.ui \
     chatpage.ui \
     chatuserwid.ui \
+    conuseritem.ui \
     findsuccessdialog.ui \
     friendlabel.ui \
+    grouptipitem.ui \
     mainwindow.ui \
     logindialog.ui \
     registerdialog.ui

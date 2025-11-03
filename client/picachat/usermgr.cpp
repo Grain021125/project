@@ -9,6 +9,11 @@ UserMgr::~UserMgr() {
 
 }
 
+QString UserMgr::GetName()
+{
+    return QString();
+}
+
 void UserMgr::SetName(QString name)
 {
     _name = name;
@@ -22,4 +27,9 @@ void UserMgr::SetUid(int uid)
 void UserMgr::SetToken(QString token)
 {
     _token = token;
+}
+
+std::vector<std::shared_ptr<ApplyInfo> > UserMgr::GetApplyList()
+{
+    return _apply_list;
 }

@@ -34,11 +34,14 @@ private:
     bool _b_loading;
 
     QList<StateWidget*> _lb_list;
+    QWidget* _last_widget;
 
 public slots:
     void slot_side_chat();
     void slot_side_contact();
     void slot_text_changed(const QString &str);
+    void slot_switch_apply_friend_page();
+    void slot_show_search(bool show);
 };
 
 #endif // CHATDIALOG_H
