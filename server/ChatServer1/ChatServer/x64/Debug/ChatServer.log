@@ -1,0 +1,36 @@
+﻿  C:\Users\Grain\Desktop\project\server\ChatServer1\mysqlcppconn-10-vs14.dll
+  C:\Users\Grain\Desktop\project\server\ChatServer1\mysqlcppconnx-2-vs14.dll
+  复制了 2 个文件
+  ChatGrpcClient.cpp
+  CSession.cpp
+  Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
+  - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
+  - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
+  Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
+C:\Users\Grain\Desktop\project\server\ChatServer1\CSession.cpp(128,32): warning C4244: “+=”: 从“unsigned __int64”转换到“uint16_t”，可能丢失数据
+C:\Users\Grain\Desktop\project\server\ChatServer1\CSession.cpp(148,22): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  LogicSystem.cpp
+  Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
+  - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
+  - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
+  Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
+C:\Users\Grain\Desktop\project\server\ChatServer1\LogicSystem.cpp(32,79): warning C4267: “参数”: 从“size_t”转换到“uint16_t”，可能丢失数据
+  MysqlDAO.cpp
+  Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
+  - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
+  - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
+  Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
+  MysqlMgr.cpp
+  Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
+  - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
+  - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
+  Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
+  UserMgr.cpp
+  Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
+  - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
+  - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
+  Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
+  正在生成代码...
+  ChatServer.vcxproj -> C:\Users\Grain\Desktop\project\server\ChatServer1\x64\Debug\ChatServer.exe
+  C:\Users\Grain\Desktop\project\server\ChatServer1\config.ini
+  复制了 1 个文件

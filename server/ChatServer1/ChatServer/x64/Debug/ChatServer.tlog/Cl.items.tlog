@@ -1,0 +1,16 @@
+C:\Users\Grain\Desktop\project\server\ChatServer1\AsioIOServicePool.cpp;C:\Users\Grain\Desktop\project\server\ChatServer1\ChatServer\x64\Debug\AsioIOServicePool.obj
+C:\Users\Grain\Desktop\project\server\ChatServer1\ChatGrpcClient.cpp;C:\Users\Grain\Desktop\project\server\ChatServer1\ChatServer\x64\Debug\ChatGrpcClient.obj
+C:\Users\Grain\Desktop\project\server\ChatServer1\ChatServer.cpp;C:\Users\Grain\Desktop\project\server\ChatServer1\ChatServer\x64\Debug\ChatServer.obj
+C:\Users\Grain\Desktop\project\server\ChatServer1\ConfigMgr.cpp;C:\Users\Grain\Desktop\project\server\ChatServer1\ChatServer\x64\Debug\ConfigMgr.obj
+C:\Users\Grain\Desktop\project\server\ChatServer1\CServer.cpp;C:\Users\Grain\Desktop\project\server\ChatServer1\ChatServer\x64\Debug\CServer.obj
+C:\Users\Grain\Desktop\project\server\ChatServer1\CSession.cpp;C:\Users\Grain\Desktop\project\server\ChatServer1\ChatServer\x64\Debug\CSession.obj
+C:\Users\Grain\Desktop\project\server\ChatServer1\LogicSystem.cpp;C:\Users\Grain\Desktop\project\server\ChatServer1\ChatServer\x64\Debug\LogicSystem.obj
+C:\Users\Grain\Desktop\project\server\ChatServer1\message.grpc.pb.cc;C:\Users\Grain\Desktop\project\server\ChatServer1\ChatServer\x64\Debug\message.grpc.pb.obj
+C:\Users\Grain\Desktop\project\server\ChatServer1\message.pb.cc;C:\Users\Grain\Desktop\project\server\ChatServer1\ChatServer\x64\Debug\message.pb.obj
+C:\Users\Grain\Desktop\project\server\ChatServer1\MsgNode.cpp;C:\Users\Grain\Desktop\project\server\ChatServer1\ChatServer\x64\Debug\MsgNode.obj
+C:\Users\Grain\Desktop\project\server\ChatServer1\MysqlDAO.cpp;C:\Users\Grain\Desktop\project\server\ChatServer1\ChatServer\x64\Debug\MysqlDAO.obj
+C:\Users\Grain\Desktop\project\server\ChatServer1\MysqlMgr.cpp;C:\Users\Grain\Desktop\project\server\ChatServer1\ChatServer\x64\Debug\MysqlMgr.obj
+C:\Users\Grain\Desktop\project\server\ChatServer1\MysqlPool.cpp;C:\Users\Grain\Desktop\project\server\ChatServer1\ChatServer\x64\Debug\MysqlPool.obj
+C:\Users\Grain\Desktop\project\server\ChatServer1\RedisMgr.cpp;C:\Users\Grain\Desktop\project\server\ChatServer1\ChatServer\x64\Debug\RedisMgr.obj
+C:\Users\Grain\Desktop\project\server\ChatServer1\StatusGrpcClient.cpp;C:\Users\Grain\Desktop\project\server\ChatServer1\ChatServer\x64\Debug\StatusGrpcClient.obj
+C:\Users\Grain\Desktop\project\server\ChatServer1\UserMgr.cpp;C:\Users\Grain\Desktop\project\server\ChatServer1\ChatServer\x64\Debug\UserMgr.obj

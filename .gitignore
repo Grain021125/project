@@ -9,3 +9,4 @@
 ./server/VarifyServer/node_modules
 server/GateServer/x64/Debug/
 ./build
+/client/picachat/bin/
